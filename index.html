@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f4f7fb" />
+  <title>Comprehension Coach</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">11+ / 12+ English</p>
+        <h1>Comprehension Coach</h1>
+        <p class="lede">Decode the question first. Then collect evidence, build a scaffold, and only then write the answer.</p>
+      </div>
+      <div class="score-card" aria-live="polite">
+        <span id="streakLabel">0 mastered</span>
+        <strong id="accuracyLabel">—</strong>
+        <small>decode accuracy</small>
+      </div>
+    </header>
+
+    <nav class="tabs" aria-label="Sections">
+      <button class="tab active" data-view="practice">Practice</button>
+      <button class="tab" data-view="examples">Examples</button>
+      <button class="tab" data-view="guide">Method</button>
+      <button class="tab" data-view="progress">Progress</button>
+    </nav>
+
+    <section id="practiceView" class="view active">
+      <div class="toolbar card">
+        <label>
+          Skill
+          <select id="skillSelect">
+            <option value="all">Mixed practice</option>
+            <option value="language">Language analysis</option>
+            <option value="inference">Inference</option>
+            <option value="judgement">Judgement</option>
+            <option value="retrieval">Retrieval / comparison</option>
+            <option value="creative">Creative continuation</option>
+          </select>
+        </label>
+        <label>
+          Difficulty
+          <select id="difficultySelect">
+            <option value="all">Mixed</option>
+            <option value="1">Starter</option>
+            <option value="2">11+</option>
+            <option value="3">Selective</option>
+          </select>
+        </label>
+        <button id="newQuestionBtn" class="secondary">New question</button>
+      </div>
+
+      <article class="question-card card">
+        <div class="question-meta">
+          <span id="skillBadge" class="badge"></span>
+          <span id="difficultyBadge" class="badge pale"></span>
+          <span id="timer" class="timer">00:00</span>
+        </div>
+        <p class="mini-label">PASSAGE</p>
+        <div id="passage" class="passage"></div>
+        <p class="mini-label">QUESTION</p>
+        <h2 id="question"></h2>
+      </article>
+
+      <section class="stage card" data-stage="1">
+        <div class="stage-head">
+          <span class="stage-no">1</span>
+          <div><h3>Decode</h3><p>What is the examiner asking you to do?</p></div>
+        </div>
+        <div class="two-col">
+          <div>
+            <label class="field-label">ACTION</label>
+            <div id="actionChoices" class="choice-grid"></div>
+          </div>
+          <div>
+            <label class="field-label">TARGET</label>
+            <div id="targetChoices" class="choice-grid"></div>
+          </div>
+        </div>
+        <button id="checkDecodeBtn" class="primary">Check ACTION + TARGET</button>
+        <div id="decodeFeedback" class="feedback hidden"></div>
+      </section>
+
+      <section id="collectStage" class="stage card locked" data-stage="2">
+        <div class="stage-head">
+          <span class="stage-no">2</span>
+          <div><h3>Collect</h3><p>Choose the clues that directly help answer the question.</p></div>
+        </div>
+        <div id="evidenceChoices" class="evidence-list"></div>
+        <button id="checkEvidenceBtn" class="primary">Check evidence</button>
+        <div id="evidenceFeedback" class="feedback hidden"></div>
+      </section>
+
+      <section id="scaffoldStage" class="stage card locked" data-stage="3">
+        <div class="stage-head">
+          <span class="stage-no">3</span>
+          <div><h3>Build the scaffold</h3><p>Arrange the thinking before writing.</p></div>
+        </div>
+        <div id="scaffoldTemplate" class="scaffold"></div>
+        <button id="revealScaffoldBtn" class="secondary">Show a strong scaffold</button>
+        <div id="scaffoldReveal" class="model hidden"></div>
+      </section>
+
+      <section id="writeStage" class="stage card locked" data-stage="4">
+        <div class="stage-head">
+          <span class="stage-no">4</span>
+          <div><h3>Write</h3><p>Turn the scaffold into a concise exam answer.</p></div>
+        </div>
+        <textarea id="answerBox" rows="6" placeholder="Write your answer here…"></textarea>
+        <div class="write-actions">
+          <button id="showModelBtn" class="primary">Compare with model</button>
+          <button id="selfMarkBtn" class="secondary">Self-mark checklist</button>
+        </div>
+        <div id="modelAnswer" class="model hidden"></div>
+        <div id="selfMark" class="checklist hidden"></div>
+      </section>
+
+      <div class="next-wrap">
+        <button id="nextBtn" class="primary large">Next question →</button>
+      </div>
+    </section>
+
+    <section id="examplesView" class="view">
+      <div class="section-head">
+        <div><p class="eyebrow">Worked examples</p><h2>See the thinking, not just the answer</h2></div>
+      </div>
+      <div id="examplesList" class="example-grid"></div>
+    </section>
+
+    <section id="guideView" class="view">
+      <article class="card guide">
+        <p class="eyebrow">Sai's 4-step routine</p>
+        <h2>Decode → Collect → Scaffold → Write</h2>
+        <ol class="method-list">
+          <li><strong>Decode:</strong> say, “This question wants me to…” Then identify <b>ACTION</b> + <b>TARGET</b>.</li>
+          <li><strong>Collect:</strong> choose only evidence that directly proves the answer.</li>
+          <li><strong>Scaffold:</strong> build the thought in arrows before writing sentences.</li>
+          <li><strong>Write:</strong> answer, prove, explain. Stop when the job is done.</li>
+        </ol>
+      </article>
+      <div id="patternCards" class="pattern-grid"></div>
+    </section>
+
+    <section id="progressView" class="view">
+      <article class="card">
+        <div class="section-head"><div><p class="eyebrow">Local progress</p><h2>Your practice record</h2></div><button id="resetProgressBtn" class="danger-link">Reset</button></div>
+        <div id="progressStats" class="stats-grid"></div>
+        <h3>Recent attempts</h3>
+        <div id="historyList" class="history"></div>
+      </article>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
