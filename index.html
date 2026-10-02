@@ -155,20 +155,7 @@
     </section>
   </main>
 
-  <script type="importmap">
-  {
-    "imports": {
-      "@our-apps/auth": "https://nirav2000.github.io/Apps/auth/releases/1.0.0/index.js"
-    }
-  }
-  </script>
-  <script type="module">
-    import { Auth } from "@our-apps/auth";
-    window.SharedAuth = Auth;
-    Auth.init({ appId: "comprehension", mode: "shadow" }).catch(error => {
-      console.warn("Shared auth shadow init failed", error);
-    });
-  </script>
+  <script src="https://nirav2000.github.io/Apps/apps-auth.js?v=1"></script>
   <script src="app.js"></script>
   <script src="personalisation.js"></script>
 <script>window.APP_MONITOR_APP="Comprehension";</script><script src="https://nirav2000.github.io/Apps/app-monitor.js?v=5"></script></body>
