@@ -10,9 +10,24 @@ function current(){return lessons[index]}
 function render(){const l=current();if(!l)return;choice=-1;stage=0;$('#counter').textContent='LESSON '+(index+1)+' / '+lessons.length;$('#bar').innerHTML=lessons.map((_,i)=>'<i class="'+(i<=index?'on':'')+'"></i>').join('');$('#heading').textContent=l.title;$('#question').textContent=l.question;$('#quote').textContent=l.quote;$('#choices').innerHTML='';l.options.forEach((o,i)=>{const b=document.createElement('button');b.textContent=o.text;b.onclick=()=>choose(i);$('#choices').append(b)});$('#choiceFeedback').replaceChildren();$('#previous').disabled=index===0;$('#next').textContent=index===lessons.length-1?'Start again':'Next ›';$('#answer').value='';$('#feedback').replaceChildren();$('#model').classList.add('hidden');$('#model').textContent='';$('#aiFeedback').textContent='Sign in as parent and tick consent to request AI coaching. Your words are not sent until you press Ask AI.';$('#consent').checked=false;renderBuilding();}
 function choose(i){const l=current();choice=i;[...$('#choices').children].forEach((b,j)=>b.classList.toggle('selected',j===i));const box=$('#choiceFeedback');box.replaceChildren();for(const o of l.options){const r=document.createElement('div');r.className='outcome';const m=document.createElement('span');m.className='mark'+(o.correct?'':' bad');m.textContent=o.correct?'✓':'×';const t=document.createElement('span');const b=document.createElement('strong');b.textContent=o.text+' — '+o.part+'. ';t.append(b,document.createTextNode(o.why));r.append(m,t);box.append(r)}}
 function renderBuilding(){
- const l=current(),q=l.quote.toLowerCase();
- const isSimile=/\blike\b|\bas\b.*\bas\b/.test(q),isMetaphor=/voice was thunder|eyes.{0,25}pools|was a (?:lion|storm)/.test(q);
- const technique=isSimile?'Simile':isMetaphor?'Metaphor':'Powerful verb / descriptive word';
+ const l=current();
+ // Curated by lesson rather than guessed from a word pattern: a 'like' can be a verb,
+ // and some passages support several perfectly valid techniques.
+ const techniques={
+   door:['Powerful verb / descriptive word'],
+   trembled:['Powerful verb / descriptive word'],
+   whisper:['Powerful verb / descriptive word'],
+   growl:['Powerful verb / descriptive word','Metaphor'],
+   'like-thunder':['Simile'],
+   'is-thunder':['Metaphor'],
+   'the-door-burst':['Powerful verb / descriptive word'],
+   'wind-clawed':['Powerful verb / descriptive word','Personification','Metaphor'],
+   'dulwich-voice':['Simile'],
+   'dulwich-eyes':['Metaphor'],
+   'dulwich-face':['Powerful verb / descriptive word','Alliteration'],
+   'dulwich-overall':['Powerful verb / descriptive word']
+ };
+ const accepted=techniques[l.id]||['Powerful verb / descriptive word'],technique=accepted[0];
  const choices=['Simile','Metaphor','Alliteration','Personification','Powerful verb / descriptive word'];
  const meaning={'Simile':'Compares things with like or as.','Metaphor':'Describes one thing directly as another.','Alliteration':'Repeats starting consonant sounds.','Personification':'Gives a non-human thing human qualities.','Powerful verb / descriptive word':'A deliberately chosen word creates a clear image or impression.'};
  const wrong='A different technique might occur elsewhere, but it is not the strongest explanation for THIS quotation.';
@@ -23,7 +38,7 @@ function renderBuilding(){
   const feedback=$('#techFeedback');feedback.replaceChildren();
   const row=document.createElement('div');row.className='outcome';
   const mark=document.createElement('span');mark.className='mark'+(correct?'':' bad');mark.textContent=correct?'✓':'×';
-  const explanation=document.createElement('span');explanation.textContent=(correct?'Good choice. ':'The strongest choice here is '+technique+'. ')+meaning[chosen]+' '+(correct?'Now explain its effect, not just its name.':wrong);
+  const explanation=document.createElement('span');explanation.textContent=(correct?(chosen===technique?'Good choice. ':'A valid technique, although '+technique+' is the most direct choice here. '):'The most direct choice here is '+technique+'. ')+meaning[chosen]+' '+(correct?'Now explain its effect, not just its name.':wrong);
   row.append(mark,explanation);feedback.append(row);
  });
 }
