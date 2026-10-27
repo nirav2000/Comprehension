@@ -40,7 +40,7 @@ jobs:
           const html=fs.readFileSync('answer-ladder.html','utf8');
           const cloud=fs.readFileSync('answer-ladder-cloud.js','utf8');
           const schema=fs.readFileSync('gpt-actions-openapi.yaml','utf8');
-          assert.equal(version.version,'0.6.0');
+          assert.equal(version.version,'0.7.0');
           for(const id of ['ai','consent','sync','askGPT','gptActions','parentEmail','parentPassword','exportHistory','showAllHistory'])assert.match(html,new RegExp('id="'+id+'"'));
           assert.match(cloud,/getIdToken/);
           assert.match(cloud,/families/);
