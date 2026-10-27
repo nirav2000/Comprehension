@@ -6,6 +6,9 @@ on:
       - "answer-ladder.html"
       - "answer-ladder.js"
       - "answer-ladder-cloud.js"
+      - "learner-sync.js"
+      - "quick-practice.js"
+      - "explain.js"
       - "gpt-actions-openapi.yaml"
       - "gpt-actions-setup.html"
       - "version.json"
@@ -25,6 +28,9 @@ jobs:
         run: |
           node --check answer-ladder.js
           node --check answer-ladder-cloud.js
+          node --check learner-sync.js
+          node --check quick-practice.js
+          node --check explain.js
       - name: Check version, features and schema
         run: |
           node --input-type=module <<'NODE'
@@ -38,6 +44,10 @@ jobs:
           for(const id of ['ai','consent','sync','askGPT','gptActions','parentEmail','parentPassword','exportHistory','showAllHistory'])assert.match(html,new RegExp('id="'+id+'"'));
           assert.match(cloud,/getIdToken/);
           assert.match(cloud,/families/);
+          const learner=fs.readFileSync('learner-sync.js','utf8');
+          assert.match(learner,/signInAnonymously/);
+          assert.match(learner,/approvedDevices/);
+          assert.match(learner,/comprehension-local-saved/);
           assert.match(cloud,/serverTimestamp/);
           assert.match(cloud,/navigator.clipboard/);
           assert.match(schema,/operationId: coachEnglishAnswer/);
