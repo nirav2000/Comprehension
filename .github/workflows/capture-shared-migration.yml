@@ -1,0 +1,16 @@
+name: Capture shared migration milestone
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/capture-shared-migration.yml"
+jobs:
+  capture:
+    uses: nirav2000/Apps/.github/workflows/version-lab-release.yml@main
+    with:
+      title: "v0.7.0 · Shared platform migration"
+      summary: "Comprehension Coach integrates canonical Auth in shadow mode, Learning SDK and Learning Sync local evidence, Firebase Usage Monitor, shared validation and Version Lab history backfill without migrating private parent-owned answer records."
+      areas: "Shared infrastructure::feature::Auth and learning | Validation::feature::Shared CI and browser checks | Version Lab::feature::Historical snapshots and release comparisons"
+      product_version: "0.7.0"
+    permissions:
+      contents: write
