@@ -19,7 +19,24 @@ $('#parentLogin').onclick=()=>$('#loginFields').classList.toggle('hidden');
 $('#submitLogin').onclick=signIn;
 $('#parentLogout').onclick=async()=>{try{const x=await init();await x.Auth.signOut(x.auth);user=null;status('Signed out — local history remains')}catch(e){status(String(e.message))}};
 $('#sync').onclick=sync;
-$('#consent').addEventListener('change',()=>{$('#ai').disabled=!$('#consent').checked||!user});
+$('#consent').addEventListener('change',()=>{$('#ai').disabled=!$('#consent').checked&&!!user});
 $('#save').addEventListener('click',()=>{if(user)setTimeout(()=>sync(),150)});
 $('#ai').onclick=async()=>{const d=lessonInfo();if(!user||!$('#consent').checked){$('#aiFeedback').textContent='Sign in as parent and tick consent first';return}if(d.answer.length<3){$('#aiFeedback').textContent='Write or dictate an answer first';return}const b=$('#ai');b.disabled=true;$('#aiFeedback').textContent='Assessing meaning and choosing one next step…';try{const idToken=await user.getIdToken();const resp=await fetch(WORKER+'/mark',{method:'POST',headers:{'content-type':'application/json','authorization':'Bearer '+idToken},body:JSON.stringify({...d,previousFeedback:lastFeedback?.nextStep||'',attempt:lastFeedback?2:1})});const res=await resp.json();if(!resp.ok)throw Error(res.error||'Model unavailable');lastFeedback=res.feedback;const f=lastFeedback;const box=$('#aiFeedback');box.replaceChildren();const title=document.createElement('h3');title.textContent='Your next improvement';box.append(title);const p=document.createElement('p');p.textContent=f.nextStep;box.append(p);const q=document.createElement('p');q.textContent='Try answering this: '+f.question;box.append(q);const hint=document.createElement('p');hint.textContent='Hint: '+f.hint;box.append(hint);const good=document.createElement('p');good.textContent='Already doing well: '+(f.achieved||[]).join('; ');box.append(good);const reason=document.createElement('p');reason.textContent='Why: '+f.rationale;box.append(reason);const rows=read(),needle=rows.find(x=>x.answer===d.answer&&x.lessonId);if(needle){needle.aiFeedback=f;write(rows);await saveFeedbackEvent(d,f);await sync()}else{const row={lessonId:'ai-'+d.title.toLowerCase().replace(/[^a-z0-9]/g,'-').slice(0,65),title:d.title,answer:d.answer,date:Date.now(),choice:-1,aiFeedback:f};write([row,...rows]);await saveFeedbackEvent(d,f);await sync()}}catch(e){$('#aiFeedback').textContent='AI unavailable: '+String(e.message).slice(0,160)+'. Your text remains in the answer box.'}finally{b.disabled=!user||!$('#consent').checked}};
+
+function pairingStatus(msg){const el=$('#pairingStatus');if(el)el.textContent=msg}
+$('#enableLearner').onclick=async()=>{try{const api=window.ComprehensionLearnerSync;if(!api)throw Error('Learner sync module not available');const uid=await api.enable();$('#learnerDeviceStatus').textContent='Device UID: '+uid;pairingStatus('On the parent device, enter the UID above and approve it. Your child does not need the parent password.')}catch(e){pairingStatus(String(e.message||e))}};
+window.addEventListener('comprehension-learner-status',e=>{$('#learnerDeviceStatus').textContent=e.detail?.status||'Not paired';if(e.detail?.approved){$('#ai').disabled=!$('#consent').checked}});
+async function membership(action){
+ const x=await init();if(!user)throw Error('Sign in as parent first');
+ const uid=$('#approveDeviceUid').value.trim();
+ if(!/^[a-zA-Z0-9_-]{15,128}$/.test(uid)||uid===OWNER_UID)throw Error('Please paste Sai’s Firebase device UID');
+ const ref=x.F.doc(x.db,'families',OWNER_UID,'learners','sai','approvedDevices',uid);
+ if(action==='approve')await x.F.setDoc(ref,{app:'comprehension',role:'learner',deviceUid:uid,learnerId:'sai',approvedAt:x.F.serverTimestamp()});
+ else await x.F.deleteDoc(ref);
+ pairingStatus(action==='approve'?'Approved '+uid+'. Sai can now upload answers.':'Revoked '+uid+'. No further uploads are allowed.');
+}
+$('#approveDevice').onclick=()=>membership('approve').catch(e=>pairingStatus('Approval failed: '+String(e.message||e)));
+$('#revokeDevice').onclick=()=>membership('revoke').catch(e=>pairingStatus('Revocation failed: '+String(e.message||e)));
+
 init().then(()=>{if(user)sync()}).catch(()=>status('Local history only; Firebase unavailable'));
+
