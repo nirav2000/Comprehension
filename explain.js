@@ -309,7 +309,7 @@ async function startRecording(){
   recorder.start();
   startRecognition();
   $('#recordBtn').classList.add('hidden');$('#stopAudioBtn').classList.remove('hidden');
-  mediaStatus('● Recording now. Speak clearly and tap Stop. Maximum 90 seconds.');
+  mediaStatus(liveRecognition?'Recording + dictating together. Maximum 90 seconds.':'Recording audio. Transcription may not be supported here; maximum 90 seconds.');
   recordTimeout=setTimeout(()=>stopRecording(false),MAX_AUDIO_SECONDS*1000);
  }catch(e){micStream?.getTracks().forEach(t=>t.stop());micStream=null;mediaStatus('Could not use the microphone ('+(e.name||'permission denied')+'). You can still type or use keyboard dictation.')}
 }
@@ -338,7 +338,7 @@ function startRecognition(){
  r.onerror=e=>mediaStatus('Audio recording continues. Speech-to-text unavailable ('+e.error+').');
  r.onend=()=>{if(liveRecognition===r)liveRecognition=null;if(recorder?.state!=='recording')mediaStatus('Dictation finished. Check the text for mistakes.');};
  try{r.start();mediaStatus('Listening for your explanation. Speech recognition may use your browser’s online speech service.');}
- catch(e){liveRecognition=null;$('#dictateBtn').textContent='🎤 Dictate to text';mediaStatus('Dictation could not start. Use keyboard dictation or type instead.')}
+ catch(e){liveRecognition=null;mediaStatus('Audio recording continues, but speech transcription could not start. Use keyboard dictation afterwards.')}
 }
 function stopRecognition(){if(liveRecognition){try{liveRecognition.stop()}catch{}liveRecognition=null;}}
 async function startLearningSDK(){
