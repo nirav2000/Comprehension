@@ -3,20 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#091411">
+  <meta name="theme-color" content="#080808">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Learn to Explain">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <title>Learn to Explain | Comprehension Coach</title>
-  <link rel="stylesheet" href="explain.css?v=20261027">
-</head>
+  <link rel="stylesheet" href="explain.css?v=20261027v020">
+<style>.quick-launch{margin:18px 0;padding:14px 17px;background:#252525;border:1px solid #3e3e3e;border-radius:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}.quick-launch a{color:#fff;font-weight:750}.quick-launch span{color:#bbb;font-size:.81rem}</style></head>
 <body>
   <div class="app-shell">
     <header class="topbar">
       <a class="brand" href="./index.html" aria-label="Comprehension Coach home"><span class="brand-mark">C</span><span><b>Comprehension</b><small>LEARN TO EXPLAIN</small></span></a>
       <div class="toplinks"><span id="storageNote" class="storage-note">Saved on this device</span><a href="./index.html" class="subtle-link">Exam practice <span aria-hidden="true">↗</span></a></div>
     </header>
+    <div class="quick-launch"><a href="./quick-practice.html">Open original five-question practice →</a><span>Same compact interaction and green progress bars as the ChatGPT exercise.</span></div>
     <nav class="primary-nav" aria-label="Learning sections">
       <button class="nav-btn active" type="button" data-view="learn" aria-current="page">Learn</button>
       <button class="nav-btn" type="button" data-view="review">Review <span id="reviewCount" class="review-count">0</span></button>
@@ -54,7 +55,7 @@
         <div id="parentBody"></div>
       </section>
     </main>
-    <footer class="footer"><span>Comprehension Coach · Learn to Explain</span><span>Private by default: text and audio stay on this device unless exported.</span><span id="version">2026.10.27</span></footer>
+    <footer class="footer"><span>Comprehension Coach · Learn to Explain</span><span>Private by default: text and audio stay on this device unless exported.</span><span id="version">v0.2.0</span></footer>
   </div>
   <div id="wordOverlay" class="overlay hidden" role="presentation">
     <section class="word-sheet" role="dialog" aria-modal="true" aria-labelledby="wordTitle">
@@ -64,7 +65,7 @@
     </section>
   </div>
   <script src="https://nirav2000.github.io/Apps/apps-auth.js?v=1" defer></script>
-  <script type="module" src="explain.js?v=20261027"></script>
+  <script type="module" src="explain.js?v=20261027v020"></script>
   <script>window.APP_MONITOR_APP='Comprehension';</script>
   <script src="https://nirav2000.github.io/Apps/app-monitor.js?v=5" defer></script>
 </body>
