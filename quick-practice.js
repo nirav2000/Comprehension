@@ -60,3 +60,5 @@ function stopVoice(){
 $('record').onclick=startVoice;$('stop').onclick=stopVoice;
 window.addEventListener('pagehide',()=>{stopVoice();if(audioUrl)URL.revokeObjectURL(audioUrl)});
 render();
+
+$('aiCoachHandoff').onclick=()=>{const lessonIds=['door','trembled','like-thunder','is-thunder','dulwich-voice'];const answer=$('answer').value;try{sessionStorage.setItem('comprehension-ai-handoff',JSON.stringify({lessonId:lessonIds[index],answer,source:'quick',savedAt:Date.now()}))}catch{navigator.clipboard?.writeText(answer).catch(()=>{})}location.href='./answer-ladder.html'};
