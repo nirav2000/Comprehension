@@ -38,3 +38,4 @@ $('#save').onclick=()=>{const answer=$('#answer').value.trim();if(!answer){$('#f
 $('#ai').onclick=()=>{$('#aiFeedback').textContent='AI feedback is not configured. No text was sent. You can still use the guided feedback above.'};
 $('#consent').onchange=()=>{$('#ai').disabled=!$('#consent').checked};
 render();renderHistory();
+window.addEventListener('comprehension-history-loaded',renderHistory);
