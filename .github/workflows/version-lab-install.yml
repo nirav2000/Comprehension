@@ -1,0 +1,20 @@
+name: Install Version Lab
+on:
+  workflow_dispatch:
+    inputs:
+      backfill_max:
+        description: Maximum reconstructed historical checkpoints
+        required: false
+        type: number
+        default: 12
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/version-lab-install.yml"
+jobs:
+  version-lab-install:
+    uses: nirav2000/Apps/.github/workflows/version-lab-install.yml@main
+    with:
+      backfill_max: 12
+    permissions:
+      contents: write
