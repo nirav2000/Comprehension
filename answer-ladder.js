@@ -11,7 +11,7 @@ function render(){const l=current();if(!l)return;choice=-1;stage=0;$('#counter')
 function choose(i){const l=current();choice=i;[...$('#choices').children].forEach((b,j)=>b.classList.toggle('selected',j===i));const box=$('#choiceFeedback');box.replaceChildren();for(const o of l.options){const r=document.createElement('div');r.className='outcome';const m=document.createElement('span');m.className='mark'+(o.correct?'':' bad');m.textContent=o.correct?'✓':'×';const t=document.createElement('span');const b=document.createElement('strong');b.textContent=o.text+' — '+o.part+'. ';t.append(b,document.createTextNode(o.why));r.append(m,t);box.append(r)}}
 function renderBuilding(){
  const l=current(),q=l.quote.toLowerCase();
- const isSimile=/\\blike\\b|\\bas\\b.*\\bas\\b/.test(q),isMetaphor=/voice was thunder|eyes.{0,25}pools|was a (?:lion|storm)/.test(q);
+ const isSimile=/\blike\b|\bas\b.*\bas\b/.test(q),isMetaphor=/voice was thunder|eyes.{0,25}pools|was a (?:lion|storm)/.test(q);
  const technique=isSimile?'Simile':isMetaphor?'Metaphor':'Powerful verb / descriptive word';
  const choices=['Simile','Metaphor','Alliteration','Personification','Powerful verb / descriptive word'];
  const meaning={'Simile':'Compares things with like or as.','Metaphor':'Describes one thing directly as another.','Alliteration':'Repeats starting consonant sounds.','Personification':'Gives a non-human thing human qualities.','Powerful verb / descriptive word':'A deliberately chosen word creates a clear image or impression.'};
