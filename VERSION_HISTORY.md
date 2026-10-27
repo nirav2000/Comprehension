@@ -16,6 +16,12 @@ Every later release must:
 3. Explain the changes and any known limits in this log.
 4. Test learner flows, existing exercises, and iOS/browser fallbacks before verification claims.
 
-## v0.2.0 — visual fidelity and original-widget restoration
+## v0.2.0 — 27 October 2026 — visual fidelity and original-widget restoration
 
-Planned after this baseline checkpoint; not yet released.
+- **Release commit checkpoint:** [3c0d9c91bf4677a481d2f6f72245719da2b399a1](https://github.com/nirav2000/Comprehension/tree/3c0d9c91bf4677a481d2f6f72245719da2b399a1).
+- Preserved the original five-question progressive multiple-choice widget as a standalone compact practice view at `quick-practice.html`, with the same simple layout, neutral charcoal colours, white text, and green progress/checked indicators.
+- Kept the expanded lesson/voice/parent tools separately at `explain.html`, now restyled with neutral grey surfaces and a near-black page background.
+- Wired record-audio, optional Web Speech API dictation, editable text, simple feedback and local answer history into the compact widget.
+- Added `version.json` and `v0.2.0` to the visible footer; changes on `main` only.
+- Verified existing four Node tests; new compact view passes static syntax check. Real iPad microphone behaviour and live GitHub Pages publication are not yet verified.
+- **Known limitation:** audio captured by the compact widget is only retained in the current browser session as an object URL; it does not automatically upload or transcribe. The full Learn to Explain pathway handles local recordings independently. Browser speech recognition varies by platform; iPad keyboard dictation remains a fallback.
