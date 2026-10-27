@@ -18,7 +18,7 @@ let audioDb=null;
 
 function persist(){
   data.updatedAt=Date.now();
-  try{localStorage.setItem(KEY,JSON.stringify(data)); $('#storageNote').textContent='Saved on this device';return true;}
+  try{localStorage.setItem(KEY,JSON.stringify(data));window.dispatchEvent(new Event('comprehension-local-saved')); $('#storageNote').textContent='Saved on this device';return true;}
   catch(error){$('#storageNote').textContent='Storage full: export your work';console.error('Local save failed',error);return false;}
 }
 function due(id){const r=data.review[id];return !r||r.nextDue<=Date.now()}
