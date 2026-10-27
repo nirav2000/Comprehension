@@ -1,8 +1,8 @@
 {
   "name": "Comprehension Coach",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "date": "2026-10-27",
-  "previousVersion": "0.1.0",
-  "previousCommit": "c1d4fe19a1b338e85899797e2b69c581c1147c21",
-  "notes": "Original five-question exercise restored as compact practice; neutral charcoal visual system; original comprehensive Learn to Explain kept; local recording/dictation retained."
+  "previousVersion": "0.2.0",
+  "previousCommit": "91f10267ac7b57f3f45a8ba3bf44bd383bd50e2d",
+  "notes": "Green outlined check marks, red outlined incorrect marks, one combined Record + Dictate control with browser fallbacks."
 }
