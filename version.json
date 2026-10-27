@@ -1,8 +1,8 @@
 {
   "name": "Comprehension Coach",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "date": "2026-10-27",
-  "previousVersion": "0.5.0",
-  "previousCommit": "216b086e3d4801c04de8f30472af66d8ff06175a",
-  "notes": "Secure parent-approved child device pairing, Cloudflare Qwen3 AI feedback, GPT Actions setup and Ask ChatGPT, Firebase answer and feedback archive, original exercise design retained. Device approval and GPT Actions token are setup-gated."
+  "previousVersion": "0.6.0",
+  "previousCommit": "72afb1ab856fb74f14bcb5b2b150ca45107b1e04",
+  "notes": "Shared Version Lab full historical backfill; shared Auth v1.3 shadow mode; shared Learning SDK and Learning Sync local ledger (no identity-mismatched cloud transport); Firebase Usage Monitor instrumentation; shared validation CI. Original protected family answer archive retained."
 }
