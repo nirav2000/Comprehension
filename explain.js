@@ -105,7 +105,7 @@ function renderChoose(l,s){
   const selected=l.options[s.choice];
   $('#lessonBody').innerHTML=`<p class="eyebrow">STEP 2 · CHOOSE</p><h3>Choose the best explanation</h3><p class="explain">You can get it wrong and still continue. After you choose, you'll see why EVERY answer works or doesn't work.</p>
   <div class="answer-grid">${l.options.map((o,i)=>`<button class="option ${s.choice===i?'selected':''} ${answered?(o.correct?'correct':s.choice===i?'incorrect':''):''}" type="button" data-option="${i}" aria-pressed="${s.choice===i}"><span class="radio-dot" aria-hidden="true"></span><span>${esc(o.text)}</span></button>`).join('')}</div>
-  ${answered?`<div class="feedback ${selected.correct?'':'bad'}" role="status"><h4>${selected.correct?'✓ Exactly. Here is why.':'Not quite — here is the right answer.'}</h4><p>${esc(selected.why)}</p>${selected.correct?'':`<p><strong>Best answer:</strong> ${esc(l.options.find(o=>o.correct)?.text||'')}</p>`}<div class="reasons"><p><b>What each choice teaches us</b></p>${l.options.map(o=>`<div class="reason"><b>${o.correct?'✓':'×'} ${esc(o.text)} · ${esc(o.part)}</b><p>${esc(o.why)}</p></div>`).join('')}</div></div>`:''}
+  ${answered?`<div class="feedback ${selected.correct?'':'bad'}" role="status"><h4>${selected.correct?'✓ Exactly. Here is why.':'Not quite — here is the right answer.'}</h4><p>${esc(selected.why)}</p>${selected.correct?'':`<p><strong>Best answer:</strong> ${esc(l.options.find(o=>o.correct)?.text||'')}</p>`}<div class="reasons"><p><b>What each choice teaches us</b></p>${l.options.map(o=>`<div class="reason"><b><span class="result-icon ${o.correct?'correct-icon':'wrong-icon'}" aria-hidden="true">${o.correct?'✓':'×'}</span> ${esc(o.text)} · ${esc(o.part)}</b><p>${esc(o.why)}</p></div>`).join('')}</div></div>`:''}
   <div class="hintbar"><button class="btn ghost" type="button" data-hint="1">Give me a hint</button><button class="btn ghost" type="button" data-word="explain">What does explain mean?</button></div><div id="hintSlot"></div>`;
   if(s.shownHints.length)renderHints(l);
 }
@@ -125,8 +125,8 @@ function renderWrite(l,s){
   <div class="answer-actions"><button id="insertParts" type="button" class="btn secondary">Use my four parts</button><button id="modelBtn" type="button" class="btn ghost">${s.modelSeen?'Hide':'Show'} model answer</button><button id="compareBtn" type="button" class="btn ghost">Check my explanation</button></div>
   <div id="modelSlot" class="model ${s.modelSeen?'':'hidden'}"><h4>One strong answer</h4><p>${esc(l.model)}</p><h4>Why is this better?</h4><p class="weak">Less effective: ${esc(l.weak)}</p><p>${esc(l.whyBetter)}</p></div>
   <div id="comparisonSlot"></div>
-  <div class="audio-box"><h4>🎙 Speak instead of typing</h4><p><b>Dictate to text</b> uses your browser's speech service. <b>Record audio</b> saves your spoken answer for playback on this device. These are separate functions: recording alone does not automatically create text.</p>
-  <div class="recorder-actions"><button id="dictateBtn" class="btn primary" type="button">🎤 Dictate to text</button><button id="recordBtn" class="btn secondary" type="button">● Record answer</button><button id="stopAudioBtn" class="btn secondary hidden" type="button">■ Stop recording</button></div>
+  <div class="audio-box"><h4>🎙 Speak instead of typing</h4><p>One button records the audio and attempts speech-to-text at the same time. Some browsers allow audio but not transcription; you can still edit your answer or use keyboard dictation.</p>
+  <div class="recorder-actions"><button id="recordBtn" class="btn primary" type="button">● Record + Dictate</button><button id="stopAudioBtn" class="btn secondary hidden" type="button">■ Stop recording + dictation</button></div>
   <p id="micStatus" class="quiet" role="status">Or tap the microphone on the iPad/iPhone keyboard inside the answer box.</p>
   <div id="transcriptPreview" class="transcript-preview" aria-live="polite"></div><div id="audioPlayback"></div></div>
   <div id="saveMessage" aria-live="polite"></div>
@@ -135,7 +135,6 @@ function renderWrite(l,s){
   $('#insertParts').onclick=()=>{const bits=s.build.map(x=>x.trim()).filter(Boolean);if(!bits.length){announce('Try adding words in the four boxes first, or show the worked example.');return}const area=$('#answerArea');area.value=bits.join(' ').replace(/\s+([,.!?])/g,'$1');s.answer=area.value;s.entryMode='scaffolded';area.focus()};
   $('#modelBtn').onclick=()=>{s.modelSeen=!s.modelSeen;$('#modelSlot').classList.toggle('hidden',!s.modelSeen);s.feedbackSeen=true};
   $('#compareBtn').onclick=()=>{s.feedbackSeen=true;$('#comparisonSlot').innerHTML=renderComparison(l,s.answer)};
-  $('#dictateBtn').onclick=startRecognition;
   $('#recordBtn').onclick=startRecording;
   $('#stopAudioBtn').onclick=()=>stopRecording(false);
   if(s.audioBlob)showAudioPreview(s.audioBlob);
@@ -304,16 +303,18 @@ async function startRecording(){
    const btn=$('#recordBtn'),stop=$('#stopAudioBtn');btn?.classList.remove('hidden');stop?.classList.add('hidden');
    if(!session||!blob.size){mediaStatus('Recording was empty. You can try again.');return}
    const key=id();
-   try{await audioPut(key,blob);session.recordingId=key;session.hasAudio=true;session.audioBlob=blob;showAudioPreview(blob);mediaStatus('✓ Recording saved on this device. You can play it back or download it. Recordings are not automatically transcribed.');}
+   try{await audioPut(key,blob);session.recordingId=key;session.hasAudio=true;session.audioBlob=blob;showAudioPreview(blob);mediaStatus('Audio saved on this device. Transcript was added if browser speech recognition worked; check the text for mistakes.');}
    catch{session.recordingId=null;session.hasAudio=true;session.audioBlob=blob;showAudioPreview(blob);mediaStatus('Recording available for playback, but saving failed. Download it now if you want to keep it.')}
   };
   recorder.start();
+  startRecognition();
   $('#recordBtn').classList.add('hidden');$('#stopAudioBtn').classList.remove('hidden');
   mediaStatus('● Recording now. Speak clearly and tap Stop. Maximum 90 seconds.');
   recordTimeout=setTimeout(()=>stopRecording(false),MAX_AUDIO_SECONDS*1000);
  }catch(e){micStream?.getTracks().forEach(t=>t.stop());micStream=null;mediaStatus('Could not use the microphone ('+(e.name||'permission denied')+'). You can still type or use keyboard dictation.')}
 }
 function stopRecording(discard){
+ stopRecognition();
  clearTimeout(recordTimeout);
  if(recorder?.state==='recording'){
   if(discard){recorder.onstop=()=>{micStream?.getTracks().forEach(t=>t.stop());micStream=null};}
@@ -323,25 +324,23 @@ function stopRecording(discard){
 }
 function startRecognition(){
  if(!session)return;
- if(recorder?.state==='recording'){mediaStatus('Stop the audio recorder before dictating to text.');return}
  if(liveRecognition){stopRecognition();return}
  const Speech=window.SpeechRecognition||window.webkitSpeechRecognition;
- if(!Speech){mediaStatus('Automatic speech-to-text is unavailable here. Tap inside the answer box and use the iPad/iPhone keyboard microphone instead.');$('#answerArea').focus();return}
+ if(!Speech){mediaStatus('Recording audio. Automatic transcription unsupported here; use keyboard dictation afterwards if needed.');return}
  const r=new Speech();r.lang='en-GB';r.interimResults=true;r.continuous=false;
  liveRecognition=r;const before=($('#answerArea').value||'').trim();let final='';
- $('#dictateBtn').textContent='■ Stop dictating';
  r.onresult=e=>{
   let interim='';
   for(let i=e.resultIndex;i<e.results.length;i++){const part=e.results[i][0]?.transcript||'';if(e.results[i].isFinal)final+=part+' ';else interim+=part}
   const area=$('#answerArea');if(area){area.value=[before,final.trim()].filter(Boolean).join(' ').trim();session.answer=area.value;session.entryMode='dictated'}
   $('#transcriptPreview').textContent=interim?'Listening: '+interim:'Text added. Read it and correct any mistakes.';
  };
- r.onerror=e=>mediaStatus('Dictation was interrupted ('+e.error+'). You can retry or use keyboard dictation.');
- r.onend=()=>{if(liveRecognition===r)liveRecognition=null;const b=$('#dictateBtn');if(b)b.textContent='🎤 Dictate to text';if(!$('#micStatus')?.textContent?.includes('interrupted'))mediaStatus('Dictation finished. Check the text for mistakes.');};
+ r.onerror=e=>mediaStatus('Audio recording continues. Speech-to-text unavailable ('+e.error+').');
+ r.onend=()=>{if(liveRecognition===r)liveRecognition=null;if(recorder?.state!=='recording')mediaStatus('Dictation finished. Check the text for mistakes.');};
  try{r.start();mediaStatus('Listening for your explanation. Speech recognition may use your browser’s online speech service.');}
  catch(e){liveRecognition=null;$('#dictateBtn').textContent='🎤 Dictate to text';mediaStatus('Dictation could not start. Use keyboard dictation or type instead.')}
 }
-function stopRecognition(){if(liveRecognition){try{liveRecognition.stop()}catch{}liveRecognition=null;}const b=$('#dictateBtn');if(b)b.textContent='🎤 Dictate to text'}
+function stopRecognition(){if(liveRecognition){try{liveRecognition.stop()}catch{}liveRecognition=null;}}
 async function startLearningSDK(){
  try{const mod=await import('https://nirav2000.github.io/Apps/learning/v1/index.js');learningSDK=mod.createLearningStore({appId:'comprehension',learnerId:'sai'});}catch(e){console.info('Shared learning SDK unavailable; lesson progress remains local',e)}
 }
