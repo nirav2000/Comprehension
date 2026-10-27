@@ -24,7 +24,7 @@ async function sync(){if(!enabled||busy)return;busy=true;try{await init();if(!aw
 function device(){return {enabled,uid:user?.uid||'',status:lastStatus}}
 async function getApprovedUser(){if(!enabled){return null}await init();return await approved()?user:null}
 window.ComprehensionLearnerSync={enable,sync,device,getApprovedUser};
-window.addEventListener('comprehension-local-saved',()=>{if(enabled)sync().catch(()=>{})});
+let syncDelay=null;window.addEventListener('comprehension-local-saved',()=>{if(enabled){clearTimeout(syncDelay);syncDelay=setTimeout(()=>sync().catch(()=>{}),3500)}});
 window.addEventListener('online',()=>{if(enabled)sync().catch(()=>{})});
 window.addEventListener('visibilitychange',()=>{if(!document.hidden&&enabled)sync().catch(()=>{})});
 if(enabled)enable().catch(()=>{});
