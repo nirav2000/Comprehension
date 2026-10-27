@@ -30,4 +30,4 @@ Every later release must:
 
 **Pre-change checkpoint:** [91f10267ac7b57f3f45a8ba3bf44bd383bd50e2d](https://github.com/nirav2000/Comprehension/tree/91f10267ac7b57f3f45a8ba3bf44bd383bd50e2d). This is the immutable complete v0.2.0 tree immediately before the v0.3.0 work. Any changed file can be restored from this commit.
 
-Changes will be documented here after implementation and testing.
+Changes: quick-practice displays a single outlined green tick for each correct answer and outlined red X for each incorrect answer without list bullets. Both compact and expanded lesson flows use one Record + Dictate button to attempt simultaneous microphone recording and browser speech recognition. If automatic transcription is unsupported, audio can still be recorded; users can edit text or use keyboard dictation. Actual iPad/Safari speech recognition remains device-dependent and has not been physically tested.
