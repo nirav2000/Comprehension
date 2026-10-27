@@ -39,3 +39,9 @@ Changes: quick-practice displays a single outlined green tick for each correct a
 - AI review UI is explicitly marked *not connected*; no user text is transmitted by this release. Genuine language-model analysis requires a protected backend with access controls, rate limits and explicit consent.
 - Existing recording and dictation remain in the established exercises; Answer Ladder accepts editable text or device keyboard dictation.
 - Automated syntax verification passed. Physical iPad test and live GitHub Pages deployment verification are pending.
+
+## v0.5.0 — 27 October 2026 — Cloudflare AI, parent sync, ChatGPT routes
+
+- Pre-change immutable source checkpoint: [6be31d7fcdb7bd5852ab122e47e995eb57e79654](https://github.com/nirav2000/Comprehension/tree/6be31d7fcdb7bd5852ab122e47e995eb57e79654).
+- Planned: Workers AI coaching with signed-in parent verification, opt-in text requests, iterative hints, answer version history, Firebase sync, ChatGPT export and GPT Actions OpenAPI.
+- Deployment validation, cloud permissions and known limitations to be recorded before release.
