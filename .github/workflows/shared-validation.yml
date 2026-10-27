@@ -1,0 +1,21 @@
+name: Shared Comprehension release validation
+on:
+  push:
+    branches: [main]
+    paths:
+      - "validation.config.json"
+      - "validation/**"
+      - "shared-capabilities.js"
+      - "answer-ladder*.js"
+      - "learner-sync.js"
+      - "quick-practice*.js"
+      - "explain.js"
+      - ".github/workflows/shared-validation.yml"
+  workflow_dispatch:
+jobs:
+  shared-validation:
+    uses: nirav2000/Apps/.github/workflows/static-app-validation.yml@main
+    with:
+      config: validation.config.json
+    permissions:
+      contents: read
