@@ -9,7 +9,54 @@ const ITEMS=[
 let index=0,selection=null,recorder=null,chunks=[],audioUrl=null,recognition=null;const $=id=>document.getElementById(id);const STORE='comprehension:quick-practice:v0.2.0';function read(){try{return JSON.parse(localStorage.getItem(STORE)||'{}')}catch{return{}}}let progress=read();function save(){try{localStorage.setItem(STORE,JSON.stringify(progress))}catch{$('saved').textContent='Private mode: saving unavailable. You may copy your answers.'}}
 function render(){const q=ITEMS[index];selection=progress[index]?.choice??null;$('counter').textContent=`Exercise ${index+1} of ${ITEMS.length}`;$('progress').innerHTML=ITEMS.map((_,i)=>`<span class="${i<=index?'passed':''}"></span>`).join('');$('passage').textContent=q.quote;$('question').textContent=q.question;$('options').innerHTML='';q.options.forEach((o,i)=>{const b=document.createElement('button');b.type='button';b.className='option'+(selection===i?' chosen':'');b.innerHTML='<span class="circle"></span>';const label=document.createElement('span');label.textContent=o[0];b.append(label);b.addEventListener('click',()=>choose(i));$('options').append(b)});$('feedback').innerHTML='';$('write').hidden=selection===null;$('answer').value=progress[index]?.answer||'';$('modelText').hidden=true;$('modelText').textContent='';$('prev').disabled=index===0;$('next').textContent=index===4?'Start again ›':'Next exercise ›';if(selection!==null)showFeedback()}
 function choose(i){selection=i;progress[index]={...(progress[index]||{}),choice:i,ts:Date.now()};save();render()}
-function showFeedback(){const q=ITEMS[index],correct=selection===q.correct;const box=$('feedback');box.className='feedback';box.replaceChildren();const title=document.createElement('b');title.textContent=(correct?'✓ Correct. ':'The best answer is: ')+q.options[q.correct][0];box.append(title);const intro=document.createElement('p');intro.textContent=q.options[selection][2];box.append(intro);const label=document.createElement('p');label.textContent='Why each option works or does not work:';box.append(label);const ul=document.createElement('ul');q.options.forEach((o,i)=>{const li=document.createElement('li');li.textContent=(i===q.correct?'✓ ':'• ')+o[0]+' — '+o[1]+': '+o[2];ul.append(li)});box.append(ul)}
+function showFeedback(){
+ const q=ITEMS[index],good=selection===q.correct,box=$('feedback');box.className='feedback';box.replaceChildren();
+ const head=document.createElement('div');head.className='feedback-head';
+ const mark=document.createElement('span');mark.className='result-icon '+(good?'correct-icon':'wrong-icon');mark.textContent=good?'✓':'×';
+ const label=document.createElement('b');label.textContent=good?'Correct. '+q.options[q.correct][0]:'Not quite. The answer is '+q.options[q.correct][0];head.append(mark,label);box.append(head);
+ const intro=document.createElement('p');intro.textContent=q.options[selection][2];box.append(intro);
+ const title=document.createElement('p');title.textContent='Why each option works or does not work:';box.append(title);
+ const rows=document.createElement('div');rows.className='reason-list';
+ q.options.forEach((o,i)=>{const row=document.createElement('div');row.className='reason-row';const icon=document.createElement('span');icon.className='result-icon '+(i===q.correct?'correct-icon':'wrong-icon');icon.textContent=i===q.correct?'✓':'×';icon.setAttribute('aria-label',i===q.correct?'Correct':'Incorrect');const content=document.createElement('span');const bold=document.createElement('strong');bold.textContent=o[0]+' — '+o[1]+': ';content.append(bold,document.createTextNode(o[2]));row.append(icon,content);rows.append(row)});box.append(rows);
+}
 $('prev').onclick=()=>{if(index>0){index--;render()}};$('next').onclick=()=>{index=(index+1)%ITEMS.length;render()};$('answer').oninput=()=>{progress[index]={...(progress[index]||{}),answer:$('answer').value,answerAt:Date.now()};save()};$('model').onclick=()=>{const e=$('modelText');e.hidden=!e.hidden;if(!e.hidden)e.textContent='Example explanation: '+ITEMS[index].model};$('check').onclick=()=>{const q=ITEMS[index],answer=$('answer').value.toLowerCase();const matches=q.key.filter(k=>answer.includes(k));const e=$('modelText');e.hidden=false;e.textContent=answer.trim()?`You included ${matches.length} of ${q.key.length} helpful ideas (${matches.join(', ')||'none yet'}). This is a word-check, not a mark: other correct wording is possible. Compare with: ${q.model}`:'Try speaking or writing one sentence first, or reveal this example: '+q.model};
-$('dictate').onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$('voiceStatus').textContent='This browser does not offer built-in speech recognition. Tap the text box and use the keyboard microphone, or record audio instead.';return}try{recognition?.stop();recognition=new SR();recognition.lang='en-GB';recognition.interimResults=false;recognition.onresult=e=>{const words=Array.from(e.results).map(x=>x[0].transcript).join(' ');$('answer').value=($('answer').value+' '+words).trim();$('answer').dispatchEvent(new Event('input'));$('voiceStatus').textContent='Transcribed. Please correct any words the device misheard.'};recognition.onerror=e=>{$('voiceStatus').textContent='Dictation error: '+e.error+'. Use the keyboard microphone or type instead.'};recognition.start();$('voiceStatus').textContent='Listening… Speak your explanation.'}catch(e){$('voiceStatus').textContent='Dictation unavailable: '+e.message}};
-$('record').onclick=async()=>{if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){$('voiceStatus').textContent='Recording unavailable in this browser. Try Safari, or use keyboard dictation.';return}try{const stream=await navigator.mediaDevices.getUserMedia({audio:true});chunks=[];recorder=new MediaRecorder(stream);recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};recorder.onstop=()=>{stream.getTracks().forEach(t=>t.stop());if(audioUrl)URL.revokeObjectURL(audioUrl);audioUrl=URL.createObjectURL(new Blob(chunks,{type:recorder.mimeType}));$('playback').src=audioUrl;$('playback').hidden=false;$('voiceStatus').textContent='Audio recorded on this device. Recording does not automatically create a transcript; use Dictate separately.';chunks=[]};recorder.start();$('record').hidden=true;$('stop').hidden=false;$('voiceStatus').textContent='Recording… Tap Stop recording when finished.'}catch(e){$('voiceStatus').textContent='Microphone access unavailable: '+e.message}};$('stop').onclick=()=>{if(recorder?.state==='recording')recorder.stop();$('record').hidden=false;$('stop').hidden=true};render();
+let voiceActive=false,voiceStream=null,voiceTimer=null,spokenBase='',spokenFinal='',spokenError='';
+const voiceStatus=t=>$('voiceStatus').textContent=t;
+function voiceButtons(active){$('record').hidden=active;$('stop').hidden=!active}
+async function startVoice(){
+ if(voiceActive)return;
+ if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){voiceStatus('Microphone recording is unsupported here; use keyboard dictation or type.');return}
+ voiceActive=true;spokenError='';spokenBase=$('answer').value.trim();spokenFinal='';voiceButtons(true);
+ try{
+  voiceStream=await navigator.mediaDevices.getUserMedia({audio:true});
+  if(!voiceActive){voiceStream.getTracks().forEach(t=>t.stop());return}
+  const type=['audio/mp4','audio/webm;codecs=opus','audio/webm'].find(t=>MediaRecorder.isTypeSupported(t));
+  recorder=new MediaRecorder(voiceStream,type?{mimeType:type}:undefined);chunks=[];
+  recorder.ondataavailable=e=>{if(e.data?.size)chunks.push(e.data)};
+  recorder.onstop=()=>{voiceStream?.getTracks().forEach(t=>t.stop());voiceStream=null;
+   const blob=new Blob(chunks,{type:recorder.mimeType||'audio/webm'});if(audioUrl)URL.revokeObjectURL(audioUrl);
+   if(blob.size){audioUrl=URL.createObjectURL(blob);$('playback').src=audioUrl;$('playback').hidden=false;voiceStatus(spokenFinal?'Audio captured. Transcript added; please correct any misheard words.':'Audio captured. '+(spokenError||'No transcript was produced. Use keyboard dictation if needed.'))}else voiceStatus('No audio was captured. Please retry.');chunks=[]};
+  recorder.start();
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(SR){try{
+   const speech=new SR();recognition=speech;speech.lang='en-GB';speech.interimResults=true;speech.continuous=true;
+   speech.onresult=e=>{let final='',interim='';for(let i=0;i<e.results.length;i++){const result=e.results[i];if(result.isFinal)final+=(result[0]?.transcript||'')+' ';else interim+=(result[0]?.transcript||'')+' '}
+    spokenFinal=final.trim();$('answer').value=[spokenBase,spokenFinal,interim.trim()].filter(Boolean).join(' ');$('answer').dispatchEvent(new Event('input'));voiceStatus('Recording and transcribing. Correct any words the device mishears.')};
+   speech.onerror=e=>{spokenError='Transcription unavailable ('+e.error+').';voiceStatus('Recording audio. '+spokenError)};
+   speech.onend=()=>{if(recognition===speech)recognition=null;if(voiceActive)voiceStatus('Audio recording continues; speech recognition has stopped.')};
+   speech.start();
+  }catch(e){recognition=null;spokenError='Automatic transcription could not start.'}}
+  else spokenError='Automatic transcription is not supported in this browser.';
+  voiceStatus(spokenError?'Recording audio. '+spokenError:'Recording and dictating. Tap Stop when finished.');
+  voiceTimer=setTimeout(stopVoice,90000);
+ }catch(e){voiceStream?.getTracks().forEach(t=>t.stop());voiceStream=null;voiceActive=false;voiceButtons(false);voiceStatus('Microphone unavailable: '+(e.name||e.message))}
+}
+function stopVoice(){
+ if(!voiceActive)return;voiceActive=false;clearTimeout(voiceTimer);voiceButtons(false);
+ if(recognition){try{recognition.stop()}catch{}recognition=null}
+ if(spokenFinal){$('answer').value=[spokenBase,spokenFinal].filter(Boolean).join(' ');$('answer').dispatchEvent(new Event('input'))}
+ if(recorder?.state==='recording')recorder.stop();else{voiceStream?.getTracks().forEach(t=>t.stop());voiceStream=null}
+}
+$('record').onclick=startVoice;$('stop').onclick=stopVoice;
+window.addEventListener('pagehide',()=>{stopVoice();if(audioUrl)URL.revokeObjectURL(audioUrl)});
+render();
