@@ -1,0 +1,653 @@
+{
+  "schemaVersion": 1,
+  "appId": "comprehension",
+  "repository": "nirav2000/Comprehension",
+  "liveUrl": "https://nirav2000.github.io/Comprehension/",
+  "releases": [
+    {
+      "checkpointId": "vl-adoption-2026-10-27-4dc2f07a",
+      "appId": "comprehension",
+      "productVersion": "0.6.0",
+      "commit": "4dc2f07ac16222811adec2e184d7ec7b534c1088",
+      "sourceRef": null,
+      "createdAt": "2026-10-27T19:41:19.046Z",
+      "title": "Version Lab adoption baseline",
+      "summary": "Baseline checkpoint created when the shared Version Lab was installed and future checkpoint management became shared.",
+      "areas": [
+        {
+          "id": "version-lab-adoption",
+          "title": "Version Lab adoption",
+          "kind": "platform",
+          "summary": "Shared Version Lab management enabled"
+        }
+      ],
+      "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/4dc2f07ac16222811adec2e184d7ec7b534c1088",
+      "snapshotUrl": "./snapshots/vl-adoption-2026-10-27-4dc2f07a/index.html",
+      "snapshotSafety": "visual-only",
+      "compatibility": {
+        "frontend": "archived",
+        "source": "git",
+        "snapshot": "generated",
+        "backend": "live backend connections blocked",
+        "data": "contract recorded"
+      },
+      "data": {
+        "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+        "projectId": "kk-syllabus",
+        "schemaVersion": "1",
+        "paths": [
+          "families/{parentUid}/learners/sai/events",
+          "families/{parentUid}/learners/sai/approvedDevices",
+          "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+        ],
+        "notes": "Archived snapshots are visual-only and must not access the production learner database."
+      },
+      "readOnlyAdapter": null,
+      "platform": {
+        "contract": "v1.7.0",
+        "dependencies": [
+          "auth/v1",
+          "learning/v1",
+          "learning-sync/v1",
+          "pwa/v1",
+          "app-monitor",
+          "firebase-usage-monitor"
+        ]
+      },
+      "generator": {
+        "name": "Apps Version Lab",
+        "contractVersion": 1,
+        "backfilled": false
+      }
+    },
+    {
+      "checkpointId": "vl-historical-2026-10-27-4dc2f07a",
+      "appId": "comprehension",
+      "productVersion": "0.6.0",
+      "commit": "4dc2f07ac16222811adec2e184d7ec7b534c1088",
+      "sourceRef": "4dc2f07ac16222811adec2e184d7ec7b534c1088",
+      "createdAt": "2026-10-27T19:41:18.955Z",
+      "title": "ci: start one-time official shared Version Lab historical backfill",
+      "summary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/4dc2f07ac16222811adec2e184d7ec7b534c1088",
+      "snapshotUrl": "./snapshots/vl-historical-2026-10-27-4dc2f07a/index.html",
+      "snapshotSafety": "visual-only",
+      "compatibility": {
+        "frontend": "archived",
+        "source": "git",
+        "snapshot": "generated",
+        "backend": "live backend connections blocked",
+        "data": "contract recorded"
+      },
+      "data": {
+        "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+        "projectId": "kk-syllabus",
+        "schemaVersion": "1",
+        "paths": [
+          "families/{parentUid}/learners/sai/events",
+          "families/{parentUid}/learners/sai/approvedDevices",
+          "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+        ],
+        "notes": "Archived snapshots are visual-only and must not access the production learner database."
+      },
+      "readOnlyAdapter": null,
+      "platform": {
+        "contract": "v1.7.0",
+        "dependencies": [
+          "auth/v1",
+          "learning/v1",
+          "learning-sync/v1",
+          "pwa/v1",
+          "app-monitor",
+          "firebase-usage-monitor"
+        ]
+      },
+      "generator": {
+        "name": "Apps Version Lab",
+        "contractVersion": 1,
+        "backfilled": true
+      }
+    },
+    {
+      "checkpointId": "vl-historical-2026-10-27-e5e578cf",
+      "appId": "comprehension",
+      "productVersion": "0.6.0",
+      "commit": "e5e578cf26ffbc6de341f81b88b59b8a271efe9a",
+      "sourceRef": "e5e578cf26ffbc6de341f81b88b59b8a271efe9a",
+      "createdAt": "2026-10-27T19:41:18.862Z",
+      "title": "chore: install canonical shared Version Lab configuration and developer gateway",
+      "summary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/e5e578cf26ffbc6de341f81b88b59b8a271efe9a",
+      "snapshotUrl": "./snapshots/vl-historical-2026-10-27-e5e578cf/index.html",
+      "snapshotSafety": "visual-only",
+      "compatibility": {
+        "frontend": "archived",
+        "source": "git",
+        "snapshot": "generated",
+        "backend": "live backend connections blocked",
+        "data": "contract recorded"
+      },
+      "data": {
+        "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+        "projectId": "kk-syllabus",
+        "schemaVersion": "1",
+        "paths": [
+          "families/{parentUid}/learners/sai/events",
+          "families/{parentUid}/learners/sai/approvedDevices",
+          "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+        ],
+        "notes": "Archived snapshots are visual-only and must not access the production learner database."
+      },
+      "readOnlyAdapter": null,
+      "platform": {
+        "contract": "v1.7.0",
+        "dependencies": [
+          "auth/v1",
+          "learning/v1",
+          "learning-sync/v1",
+          "pwa/v1",
+          "app-monitor",
+          "firebase-usage-monitor"
+        ]
+      },
+      "generator": {
+        "name": "Apps Version Lab",
+        "contractVersion": 1,
+        "backfilled": true
+      }
+    },
+    {
+      "checkpointId": "vl-historical-2026-10-27-6d32e400",
+      "appId": "comprehension",
+      "productVersion": "0.6.0",
+      "commit": "6d32e4005065abbb8e7ff84345b05bddfc1ab73e",
+      "sourceRef": "6d32e4005065abbb8e7ff84345b05bddfc1ab73e",
+      "createdAt": "2026-10-27T19:41:18.772Z",
+      "title": "chore: install canonical shared Version Lab configuration and developer gateway",
+      "summary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/6d32e4005065abbb8e7ff84345b05bddfc1ab73e",
+      "snapshotUrl": "./snapshots/vl-historical-2026-10-27-6d32e400/index.html",
+      "snapshotSafety": "visual-only",
+      "compatibility": {
+        "frontend": "archived",
+        "source": "git",
+        "snapshot": "generated",
+        "backend": "live backend connections blocked",
+        "data": "contract recorded"
+      },
+      "data": {
+        "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+        "projectId": "kk-syllabus",
+        "schemaVersion": "1",
+        "paths": [
+          "families/{parentUid}/learners/sai/events",
+          "families/{parentUid}/learners/sai/approvedDevices",
+          "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+        ],
+        "notes": "Archived snapshots are visual-only and must not access the production learner database."
+      },
+      "readOnlyAdapter": null,
+      "platform": {
+        "contract": "v1.7.0",
+        "dependencies": [
+          "auth/v1",
+          "learning/v1",
+          "learning-sync/v1",
+          "pwa/v1",
+          "app-monitor",
+          "firebase-usage-monitor"
+        ]
+      },
+      "generator": {
+        "name": "Apps Version Lab",
+        "contractVersion": 1,
+        "backfilled": true
+      }
+    },
+    {
+      "checkpointId": "vl-historical-2026-10-27-67aa7245",
+      "appId": "comprehension",
+      "productVersion": "0.6.0",
+      "commit": "67aa7245a185ba33fea6dd719e01703e4a829c7c",
+      "sourceRef": "67aa7245a185ba33fea6dd719e01703e4a829c7c",
+      "createdAt": "2026-10-27T19:41:18.687Z",
+      "title": "chore: install canonical shared Version Lab configuration and developer gateway",
+      "summary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/67aa7245a185ba33fea6dd719e01703e4a829c7c",
+      "snapshotUrl": "./snapshots/vl-historical-2026-10-27-67aa7245/index.html",
+      "snapshotSafety": "visual-only",
+      "compatibility": {
+        "frontend": "archived",
+        "source": "git",
+        "snapshot": "generated",
+        "backend": "live backend connections blocked",
+        "data": "contract recorded"
+      },
+      "data": {
+        "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+        "projectId": "kk-syllabus",
+        "schemaVersion": "1",
+        "paths": [
+          "families/{parentUid}/learners/sai/events",
+          "families/{parentUid}/learners/sai/approvedDevices",
+          "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+        ],
+        "notes": "Archived snapshots are visual-only and must not access the production learner database."
+      },
+      "readOnlyAdapter": null,
+      "platform": {
+        "contract": "v1.7.0",
+        "dependencies": [
+          "auth/v1",
+          "learning/v1",
+          "learning-sync/v1",
+          "pwa/v1",
+          "app-monitor",
+          "firebase-usage-monitor"
+        ]
+      },
+      "generator": {
+        "name": "Apps Version Lab",
+        "contractVersion": 1,
+        "backfilled": true
+      }
+    },
+    {
+      "checkpointId": "vl-historical-2026-10-27-35f8222c",
+      "appId": "comprehension",
+      "productVersion": "0.6.0",
+      "commit": "35f8222c36fab4928f7cd7e2957db559de8c5c3f",
+      "sourceRef": "35f8222c36fab4928f7cd7e2957db559de8c5c3f",
+      "createdAt": "2026-10-27T19:41:18.595Z",
+      "title": "chore: install canonical shared Version Lab configuration and developer gateway",
+      "summary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/35f8222c36fab4928f7cd7e2957db559de8c5c3f",
+      "snapshotUrl": "./snapshots/vl-historical-2026-10-27-35f8222c/index.html",
+      "snapshotSafety": "visual-only",
+      "compatibility": {
+        "frontend": "archived",
+        "source": "git",
+        "snapshot": "generated",
+        "backend": "live backend connections blocked",
+        "data": "contract recorded"
+      },
+      "data": {
+        "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+        "projectId": "kk-syllabus",
+        "schemaVersion": "1",
+        "paths": [
+          "families/{parentUid}/learners/sai/events",
+          "families/{parentUid}/learners/sai/approvedDevices",
+          "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+        ],
+        "notes": "Archived snapshots are visual-only and must not access the production learner database."
+      },
+      "readOnlyAdapter": null,
+      "platform": {
+        "contract": "v1.7.0",
+        "dependencies": [
+          "auth/v1",
+          "learning/v1",
+          "learning-sync/v1",
+          "pwa/v1",
+          "app-monitor",
+          "firebase-usage-monitor"
+        ]
+      },
+      "generator": {
+        "name": "Apps Version Lab",
+        "contractVersion": 1,
+        "backfilled": true
+      }
+    },
+    {
+      "checkpointId": "vl-historical-2026-10-27-5cd9f07d",
+      "appId": "comprehension",
+      "productVersion": "0.6.0",
+      "commit": "5cd9f07d29d5afd9a5100a89138943a2b7cfacd0",
+      "sourceRef": "5cd9f07d29d5afd9a5100a89138943a2b7cfacd0",
+      "createdAt": "2026-10-27T19:41:18.512Z",
+      "title": "docs: record v0.5 and v0.6 feature release, rollback and remaining verification",
+      "summary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/5cd9f07d29d5afd9a5100a89138943a2b7cfacd0",
+      "snapshotUrl": "./snapshots/vl-historical-2026-10-27-5cd9f07d/index.html",
+      "snapshotSafety": "visual-only",
+      "compatibility": {
+        "frontend": "archived",
+        "source": "git",
+        "snapshot": "generated",
+        "backend": "live backend connections blocked",
+        "data": "contract recorded"
+      },
+      "data": {
+        "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+        "projectId": "kk-syllabus",
+        "schemaVersion": "1",
+        "paths": [
+          "families/{parentUid}/learners/sai/events",
+          "families/{parentUid}/learners/sai/approvedDevices",
+          "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+        ],
+        "notes": "Archived snapshots are visual-only and must not access the production learner database."
+      },
+      "readOnlyAdapter": null,
+      "platform": {
+        "contract": "v1.7.0",
+        "dependencies": [
+          "auth/v1",
+          "learning/v1",
+          "learning-sync/v1",
+          "pwa/v1",
+          "app-monitor",
+          "firebase-usage-monitor"
+        ]
+      },
+      "generator": {
+        "name": "Apps Version Lab",
+        "contractVersion": 1,
+        "backfilled": true
+      }
+    },
+    {
+      "checkpointId": "vl-historical-2026-10-27-e1c0c5a3",
+      "appId": "comprehension",
+      "productVersion": "0.6.0",
+      "commit": "e1c0c5a33cc5854870d508945344500443737d2f",
+      "sourceRef": "e1c0c5a33cc5854870d508945344500443737d2f",
+      "createdAt": "2026-10-27T19:41:18.422Z",
+      "title": "release v0.6.0: record approved learner-device cloud sync",
+      "summary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/e1c0c5a33cc5854870d508945344500443737d2f",
+      "snapshotUrl": "./snapshots/vl-historical-2026-10-27-e1c0c5a3/index.html",
+      "snapshotSafety": "visual-only",
+      "compatibility": {
+        "frontend": "archived",
+        "source": "git",
+        "snapshot": "generated",
+        "backend": "live backend connections blocked",
+        "data": "contract recorded"
+      },
+      "data": {
+        "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+        "projectId": "kk-syllabus",
+        "schemaVersion": "1",
+        "paths": [
+          "families/{parentUid}/learners/sai/events",
+          "families/{parentUid}/learners/sai/approvedDevices",
+          "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+        ],
+        "notes": "Archived snapshots are visual-only and must not access the production learner database."
+      },
+      "readOnlyAdapter": null,
+      "platform": {
+        "contract": "v1.7.0",
+        "dependencies": [
+          "auth/v1",
+          "learning/v1",
+          "learning-sync/v1",
+          "pwa/v1",
+          "app-monitor",
+          "firebase-usage-monitor"
+        ]
+      },
+      "generator": {
+        "name": "Apps Version Lab",
+        "contractVersion": 1,
+        "backfilled": true
+      }
+    },
+    {
+      "checkpointId": "vl-historical-2026-10-27-c63699e9",
+      "appId": "comprehension",
+      "productVersion": "0.5.0",
+      "commit": "c63699e9d0559d36023f253369efa13c18a0b918",
+      "sourceRef": "c63699e9d0559d36023f253369efa13c18a0b918",
+      "createdAt": "2026-10-27T19:41:18.336Z",
+      "title": "release v0.6.0: restricted learner pairing, full AI and history integration",
+      "summary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/c63699e9d0559d36023f253369efa13c18a0b918",
+      "snapshotUrl": "./snapshots/vl-historical-2026-10-27-c63699e9/index.html",
+      "snapshotSafety": "visual-only",
+      "compatibility": {
+        "frontend": "archived",
+        "source": "git",
+        "snapshot": "generated",
+        "backend": "live backend connections blocked",
+        "data": "contract recorded"
+      },
+      "data": {
+        "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+        "projectId": "kk-syllabus",
+        "schemaVersion": "1",
+        "paths": [
+          "families/{parentUid}/learners/sai/events",
+          "families/{parentUid}/learners/sai/approvedDevices",
+          "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+        ],
+        "notes": "Archived snapshots are visual-only and must not access the production learner database."
+      },
+      "readOnlyAdapter": null,
+      "platform": {
+        "contract": "v1.7.0",
+        "dependencies": [
+          "auth/v1",
+          "learning/v1",
+          "learning-sync/v1",
+          "pwa/v1",
+          "app-monitor",
+          "firebase-usage-monitor"
+        ]
+      },
+      "generator": {
+        "name": "Apps Version Lab",
+        "contractVersion": 1,
+        "backfilled": true
+      }
+    },
+    {
+      "checkpointId": "vl-historical-2026-10-27-b94a2e06",
+      "appId": "comprehension",
+      "productVersion": "0.5.0",
+      "commit": "b94a2e06bd3a22e291f10e87af2db96fa001fc2f",
+      "sourceRef": "b94a2e06bd3a22e291f10e87af2db96fa001fc2f",
+      "createdAt": "2026-10-27T19:41:18.253Z",
+      "title": "release v0.6.0: restricted learner pairing, full AI and history integration",
+      "summary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/b94a2e06bd3a22e291f10e87af2db96fa001fc2f",
+      "snapshotUrl": "./snapshots/vl-historical-2026-10-27-b94a2e06/index.html",
+      "snapshotSafety": "visual-only",
+      "compatibility": {
+        "frontend": "archived",
+        "source": "git",
+        "snapshot": "generated",
+        "backend": "live backend connections blocked",
+        "data": "contract recorded"
+      },
+      "data": {
+        "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+        "projectId": "kk-syllabus",
+        "schemaVersion": "1",
+        "paths": [
+          "families/{parentUid}/learners/sai/events",
+          "families/{parentUid}/learners/sai/approvedDevices",
+          "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+        ],
+        "notes": "Archived snapshots are visual-only and must not access the production learner database."
+      },
+      "readOnlyAdapter": null,
+      "platform": {
+        "contract": "v1.7.0",
+        "dependencies": [
+          "auth/v1",
+          "learning/v1",
+          "learning-sync/v1",
+          "pwa/v1",
+          "app-monitor",
+          "firebase-usage-monitor"
+        ]
+      },
+      "generator": {
+        "name": "Apps Version Lab",
+        "contractVersion": 1,
+        "backfilled": true
+      }
+    },
+    {
+      "checkpointId": "vl-historical-2026-10-27-7ea8a0bd",
+      "appId": "comprehension",
+      "productVersion": "0.5.0",
+      "commit": "7ea8a0bd18e1ab4e1b730424f08c6a02dafe01ca",
+      "sourceRef": "7ea8a0bd18e1ab4e1b730424f08c6a02dafe01ca",
+      "createdAt": "2026-10-27T19:41:18.166Z",
+      "title": "release v0.6.0: restricted learner pairing, full AI and history integration",
+      "summary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/7ea8a0bd18e1ab4e1b730424f08c6a02dafe01ca",
+      "snapshotUrl": "./snapshots/vl-historical-2026-10-27-7ea8a0bd/index.html",
+      "snapshotSafety": "visual-only",
+      "compatibility": {
+        "frontend": "archived",
+        "source": "git",
+        "snapshot": "generated",
+        "backend": "live backend connections blocked",
+        "data": "contract recorded"
+      },
+      "data": {
+        "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+        "projectId": "kk-syllabus",
+        "schemaVersion": "1",
+        "paths": [
+          "families/{parentUid}/learners/sai/events",
+          "families/{parentUid}/learners/sai/approvedDevices",
+          "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+        ],
+        "notes": "Archived snapshots are visual-only and must not access the production learner database."
+      },
+      "readOnlyAdapter": null,
+      "platform": {
+        "contract": "v1.7.0",
+        "dependencies": [
+          "auth/v1",
+          "learning/v1",
+          "learning-sync/v1",
+          "pwa/v1",
+          "app-monitor",
+          "firebase-usage-monitor"
+        ]
+      },
+      "generator": {
+        "name": "Apps Version Lab",
+        "contractVersion": 1,
+        "backfilled": true
+      }
+    },
+    {
+      "checkpointId": "vl-historical-2026-10-27-f93c264e",
+      "appId": "comprehension",
+      "productVersion": "0.5.0",
+      "commit": "f93c264ebb6b3e21add5c3cd0d051b7bc18fd5b6",
+      "sourceRef": "f93c264ebb6b3e21add5c3cd0d051b7bc18fd5b6",
+      "createdAt": "2026-10-27T19:41:18.083Z",
+      "title": "release v0.6.0: restricted learner pairing, full AI and history integration",
+      "summary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/f93c264ebb6b3e21add5c3cd0d051b7bc18fd5b6",
+      "snapshotUrl": "./snapshots/vl-historical-2026-10-27-f93c264e/index.html",
+      "snapshotSafety": "visual-only",
+      "compatibility": {
+        "frontend": "archived",
+        "source": "git",
+        "snapshot": "generated",
+        "backend": "live backend connections blocked",
+        "data": "contract recorded"
+      },
+      "data": {
+        "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+        "projectId": "kk-syllabus",
+        "schemaVersion": "1",
+        "paths": [
+          "families/{parentUid}/learners/sai/events",
+          "families/{parentUid}/learners/sai/approvedDevices",
+          "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+        ],
+        "notes": "Archived snapshots are visual-only and must not access the production learner database."
+      },
+      "readOnlyAdapter": null,
+      "platform": {
+        "contract": "v1.7.0",
+        "dependencies": [
+          "auth/v1",
+          "learning/v1",
+          "learning-sync/v1",
+          "pwa/v1",
+          "app-monitor",
+          "firebase-usage-monitor"
+        ]
+      },
+      "generator": {
+        "name": "Apps Version Lab",
+        "contractVersion": 1,
+        "backfilled": true
+      }
+    },
+    {
+      "checkpointId": "vl-historical-2026-10-27-1e26c650",
+      "appId": "comprehension",
+      "productVersion": "0.5.0",
+      "commit": "1e26c6503b808c2405219286d8564dbd25660738",
+      "sourceRef": "1e26c6503b808c2405219286d8564dbd25660738",
+      "createdAt": "2026-10-27T19:41:17.989Z",
+      "title": "feat: parent approves or revokes learner device using protected Firebase membership",
+      "summary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/1e26c6503b808c2405219286d8564dbd25660738",
+      "snapshotUrl": "./snapshots/vl-historical-2026-10-27-1e26c650/index.html",
+      "snapshotSafety": "visual-only",
+      "compatibility": {
+        "frontend": "archived",
+        "source": "git",
+        "snapshot": "generated",
+        "backend": "live backend connections blocked",
+        "data": "contract recorded"
+      },
+      "data": {
+        "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+        "projectId": "kk-syllabus",
+        "schemaVersion": "1",
+        "paths": [
+          "families/{parentUid}/learners/sai/events",
+          "families/{parentUid}/learners/sai/approvedDevices",
+          "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+        ],
+        "notes": "Archived snapshots are visual-only and must not access the production learner database."
+      },
+      "readOnlyAdapter": null,
+      "platform": {
+        "contract": "v1.7.0",
+        "dependencies": [
+          "auth/v1",
+          "learning/v1",
+          "learning-sync/v1",
+          "pwa/v1",
+          "app-monitor",
+          "firebase-usage-monitor"
+        ]
+      },
+      "generator": {
+        "name": "Apps Version Lab",
+        "contractVersion": 1,
+        "backfilled": true
+      }
+    }
+  ],
+  "generatedAt": "2026-10-27T19:41:19.046Z"
+}

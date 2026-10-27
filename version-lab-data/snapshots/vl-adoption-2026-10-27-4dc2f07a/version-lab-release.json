@@ -1,0 +1,56 @@
+{
+  "checkpointId": "vl-adoption-2026-10-27-4dc2f07a",
+  "appId": "comprehension",
+  "productVersion": "0.6.0",
+  "commit": "4dc2f07ac16222811adec2e184d7ec7b534c1088",
+  "sourceRef": null,
+  "createdAt": "2026-10-27T19:41:19.046Z",
+  "title": "Version Lab adoption baseline",
+  "summary": "Baseline checkpoint created when the shared Version Lab was installed and future checkpoint management became shared.",
+  "areas": [
+    {
+      "id": "version-lab-adoption",
+      "title": "Version Lab adoption",
+      "kind": "platform",
+      "summary": "Shared Version Lab management enabled"
+    }
+  ],
+  "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/4dc2f07ac16222811adec2e184d7ec7b534c1088",
+  "snapshotUrl": "./snapshots/vl-adoption-2026-10-27-4dc2f07a/index.html",
+  "snapshotSafety": "visual-only",
+  "compatibility": {
+    "frontend": "archived",
+    "source": "git",
+    "snapshot": "generated",
+    "backend": "live backend connections blocked",
+    "data": "contract recorded"
+  },
+  "data": {
+    "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+    "projectId": "kk-syllabus",
+    "schemaVersion": "1",
+    "paths": [
+      "families/{parentUid}/learners/sai/events",
+      "families/{parentUid}/learners/sai/approvedDevices",
+      "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+    ],
+    "notes": "Archived snapshots are visual-only and must not access the production learner database."
+  },
+  "readOnlyAdapter": null,
+  "platform": {
+    "contract": "v1.7.0",
+    "dependencies": [
+      "auth/v1",
+      "learning/v1",
+      "learning-sync/v1",
+      "pwa/v1",
+      "app-monitor",
+      "firebase-usage-monitor"
+    ]
+  },
+  "generator": {
+    "name": "Apps Version Lab",
+    "contractVersion": 1,
+    "backfilled": false
+  }
+}

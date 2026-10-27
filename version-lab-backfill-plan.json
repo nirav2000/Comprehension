@@ -1,0 +1,115 @@
+{
+  "generatedAt": "2026-10-27T19:41:17.909Z",
+  "totalCommits": 95,
+  "max": 12,
+  "checkpoints": [
+    {
+      "sha": "1e26c6503b808c2405219286d8564dbd25660738",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat: parent approves or revokes learner device using protected Firebase membership",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 1
+    },
+    {
+      "sha": "f93c264ebb6b3e21add5c3cd0d051b7bc18fd5b6",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "release v0.6.0: restricted learner pairing, full AI and history integration",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 2
+    },
+    {
+      "sha": "7ea8a0bd18e1ab4e1b730424f08c6a02dafe01ca",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "release v0.6.0: restricted learner pairing, full AI and history integration",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 3
+    },
+    {
+      "sha": "b94a2e06bd3a22e291f10e87af2db96fa001fc2f",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "release v0.6.0: restricted learner pairing, full AI and history integration",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 4
+    },
+    {
+      "sha": "c63699e9d0559d36023f253369efa13c18a0b918",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "release v0.6.0: restricted learner pairing, full AI and history integration",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 5
+    },
+    {
+      "sha": "e1c0c5a33cc5854870d508945344500443737d2f",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "release v0.6.0: record approved learner-device cloud sync",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 6
+    },
+    {
+      "sha": "5cd9f07d29d5afd9a5100a89138943a2b7cfacd0",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "docs: record v0.5 and v0.6 feature release, rollback and remaining verification",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 7
+    },
+    {
+      "sha": "35f8222c36fab4928f7cd7e2957db559de8c5c3f",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "chore: install canonical shared Version Lab configuration and developer gateway",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 8
+    },
+    {
+      "sha": "67aa7245a185ba33fea6dd719e01703e4a829c7c",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "chore: install canonical shared Version Lab configuration and developer gateway",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 9
+    },
+    {
+      "sha": "6d32e4005065abbb8e7ff84345b05bddfc1ab73e",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "chore: install canonical shared Version Lab configuration and developer gateway",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 10
+    },
+    {
+      "sha": "e5e578cf26ffbc6de341f81b88b59b8a271efe9a",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "chore: install canonical shared Version Lab configuration and developer gateway",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 11
+    },
+    {
+      "sha": "4dc2f07ac16222811adec2e184d7ec7b534c1088",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "ci: start one-time official shared Version Lab historical backfill",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 12
+    }
+  ]
+}

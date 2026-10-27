@@ -1,0 +1,82 @@
+openapi: 3.1.0
+info:
+  title: Comprehension Coach AI
+  version: 0.5.0
+  description: Assess an English comprehension response with one small next-step hint. Configure Actions authentication as API Key, bearer, using the private GPT_ACTION_TOKEN stored in the Cloudflare Worker.
+servers:
+  - url: https://comprehension-coach-ai.nirav2000-github.workers.dev
+paths:
+  /mark:
+    post:
+      operationId: coachEnglishAnswer
+      summary: Evaluate a student's answer using Cloudflare Workers AI
+      description: Send only text intentionally provided by the parent. Never include recordings or personal identifying data. The model returns constructive guidance rather than official marks.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [question, answer]
+              properties:
+                question:
+                  type: string
+                quote:
+                  type: string
+                answer:
+                  type: string
+                previousFeedback:
+                  type: string
+                attempt:
+                  type: integer
+                  minimum: 1
+                  maximum: 10
+      responses:
+        '200':
+          description: Teaching guidance
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                  feedback:
+                    type: object
+                    properties:
+                      achieved:
+                        type: array
+                        items:
+                          type: string
+                      nextStep:
+                        type: string
+                      question:
+                        type: string
+                      hint:
+                        type: string
+                      rationale:
+                        type: string
+                      suggestedTechnique:
+                        type: string
+                      techniqueReason:
+                        type: string
+                      rubric:
+                        type: object
+                        additionalProperties:
+                          type: boolean
+                      confidence:
+                        type: string
+        '401':
+          description: Unauthorised
+        '429':
+          description: Free-tier quota or rate limit
+        '503':
+          description: Inference unavailable
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

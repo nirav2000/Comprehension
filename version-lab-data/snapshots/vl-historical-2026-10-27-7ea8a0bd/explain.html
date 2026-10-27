@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080808">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Learn to Explain">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <title>Learn to Explain | Comprehension Coach</title>
+  <link rel="stylesheet" href="explain.css?v=20261027v030">
+<style>.quick-launch{margin:18px 0;padding:14px 17px;background:#252525;border:1px solid #3e3e3e;border-radius:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}.quick-launch a{color:#fff;font-weight:750}.quick-launch span{color:#bbb;font-size:.81rem}</style></head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./index.html" aria-label="Comprehension Coach home"><span class="brand-mark">C</span><span><b>Comprehension</b><small>LEARN TO EXPLAIN</small></span></a>
+      <div class="toplinks"><span id="storageNote" class="storage-note">Saved on this device</span><a href="./index.html" class="subtle-link">Exam practice <span aria-hidden="true">↗</span></a></div>
+    </header>
+    <div class="quick-launch"><a href="./quick-practice.html">Open original five-question practice →</a><span>Same compact interaction and green progress bars as the ChatGPT exercise.</span></div>
+    <nav class="primary-nav" aria-label="Learning sections">
+      <button class="nav-btn active" type="button" data-view="learn" aria-current="page">Learn</button>
+      <a class="nav-btn" href="./answer-ladder.html" style="text-decoration:none">Answer Ladder</a>
+      <button class="nav-btn" type="button" data-view="review">Review <span id="reviewCount" class="review-count">0</span></button>
+      <button class="nav-btn" type="button" data-view="parent">Parent progress</button>
+    </nav>
+
+    <main>
+      <section id="learnView" class="view active" aria-labelledby="heroTitle">
+        <div class="hero">
+          <div><div class="eyebrow"><span class="green-dot"></span> ENGLISH · STEP-BY-STEP</div><h1 id="heroTitle">Small steps.<br><em>Stronger answers.</em></h1><p>Understand a word. Choose an answer. Discover why. Then explain it in your own voice.</p></div>
+          <div class="hero-metric"><span id="heroAttempts">0</span><small>completed attempts</small><div id="heroConfidence">Start with one word.</div></div>
+        </div>
+        <div class="section-heading"><div><h2>Choose a lesson</h2><p>Every lesson teaches words before testing them. Nothing is locked if you get stuck.</p></div><label class="filter-wrap">Level <select id="levelFilter" aria-label="Filter by level"><option value="all">All levels</option><option value="1">1 · Start here</option><option value="2">2 · Build the skill</option><option value="3">3 · Dulwich practice</option></select></label></div>
+        <div id="lessonList" class="lesson-list" aria-label="Available lessons"></div>
+        <section id="workshop" class="workshop hidden" aria-live="polite" aria-label="Lesson workshop">
+          <div class="workshop-head"><button class="quiet-link" id="backToLessons" type="button">← All lessons</button><span id="lessonBadge" class="tag">LEVEL 1</span></div>
+          <div class="workshop-title"><div><p id="lessonSubhead" class="overline">BEGINNER EXPLANATION</p><h2 id="lessonTitle"></h2><p id="lessonSource" class="quiet"></p></div><span class="minutes" id="lessonMinutes"></span></div>
+          <div class="step-track" role="group" aria-label="Lesson stages">
+            <button type="button" class="step active" data-stage="1"><span>1</span><b>Understand</b></button>
+            <button type="button" class="step" data-stage="2"><span>2</span><b>Choose</b></button>
+            <button type="button" class="step" data-stage="3"><span>3</span><b>Build</b></button>
+            <button type="button" class="step" data-stage="4"><span>4</span><b>Speak & write</b></button>
+          </div>
+          <div class="quote-panel"><p class="overline">READ THIS · TAP A WORD FOR ITS MEANING</p><div id="quote" class="quote"></div><p id="questionText" class="question-text"></p><div id="decode" class="decode"></div></div>
+          <div id="lessonBody" class="lesson-body"></div>
+          <div class="lesson-bottom"><button id="previousStage" type="button" class="btn secondary">← Previous</button><span id="stageHelp" class="quiet tiny" aria-live="polite"></span><button id="nextStage" type="button" class="btn primary">Continue →</button></div>
+        </section>
+      </section>
+      <section id="reviewView" class="view" aria-labelledby="reviewTitle">
+        <div class="page-heading"><p class="eyebrow">SPACED PRACTICE</p><h1 id="reviewTitle">Revisit what matters.</h1><p>Missed or heavily helped skills return sooner. Confident, independent answers get longer gaps.</p></div>
+        <div id="reviewBody"></div>
+      </section>
+      <section id="parentView" class="view" aria-labelledby="parentTitle">
+        <div class="page-heading"><p class="eyebrow">PARENT VIEW · THIS DEVICE</p><h1 id="parentTitle">See the thinking.</h1><p>Track where help is needed: word meanings, selecting evidence, building an explanation, or putting it into words.</p></div>
+        <div id="parentBody"></div>
+      </section>
+    </main>
+    <footer class="footer"><span>Comprehension Coach · Learn to Explain</span><span>Private by default: text and audio stay on this device unless exported.</span><span id="version">v0.4.0</span></footer>
+  </div>
+  <div id="wordOverlay" class="overlay hidden" role="presentation">
+    <section class="word-sheet" role="dialog" aria-modal="true" aria-labelledby="wordTitle">
+      <div class="sheet-top"><p class="eyebrow">WORD HELP</p><button id="closeWord" class="close" type="button" aria-label="Close word help">×</button></div>
+      <h2 id="wordTitle"></h2><p id="wordPart" class="word-part"></p><p id="wordDefinition"></p><p id="wordExample" class="word-example"></p><a id="wordDictionary" class="quiet-link" target="_blank" rel="noopener noreferrer" href="https://dictionary.cambridge.org/">Open dictionary ↗</a>
+      <button id="wordDone" class="btn primary fill" type="button">Got it</button>
+    </section>
+  </div>
+  <script src="https://nirav2000.github.io/Apps/apps-auth.js?v=1" defer></script>
+  <script type="module" src="explain.js?v=20261027v030"></script>
+  <script>window.APP_MONITOR_APP='Comprehension';</script>
+  <script src="https://nirav2000.github.io/Apps/app-monitor.js?v=5" defer></script>
+<script type="module" src="./learner-sync.js?v=050"></script></body>
+</html>
