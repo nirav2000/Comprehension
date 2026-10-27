@@ -6,6 +6,8 @@ on:
       - "validation.config.json"
       - "validation/**"
       - "shared-capabilities.js"
+      - "version.json"
+      - "versionlabs/**"
       - "answer-ladder*.js"
       - "learner-sync.js"
       - "quick-practice*.js"
