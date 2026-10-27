@@ -1,8 +1,8 @@
 {
   "name": "Comprehension Coach",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "date": "2026-10-27",
-  "previousVersion": "0.2.0",
-  "previousCommit": "91f10267ac7b57f3f45a8ba3bf44bd383bd50e2d",
-  "notes": "Green outlined check marks, red outlined incorrect marks, one combined Record + Dictate control with browser fallbacks."
+  "previousVersion": "0.3.0",
+  "previousCommit": "9b42826fda13d284ef6cb536219e16cf9d4b5c5f",
+  "notes": "Answer Ladder with guided literary-technique relevance choices, progressive answer checking and local revisions. AI review is not yet connected and is explicitly labelled unavailable."
 }
