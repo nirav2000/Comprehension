@@ -25,3 +25,9 @@ Every later release must:
 - Added `version.json` and `v0.2.0` to the visible footer; changes on `main` only.
 - Verified existing four Node tests; new compact view passes static syntax check. Real iPad microphone behaviour and live GitHub Pages publication are not yet verified.
 - **Known limitation:** audio captured by the compact widget is only retained in the current browser session as an object URL; it does not automatically upload or transcribe. The full Learn to Explain pathway handles local recordings independently. Browser speech recognition varies by platform; iPad keyboard dictation remains a fallback.
+
+## v0.3.0 — 27 October 2026 — planned voice and feedback refinement
+
+**Pre-change checkpoint:** [91f10267ac7b57f3f45a8ba3bf44bd383bd50e2d](https://github.com/nirav2000/Comprehension/tree/91f10267ac7b57f3f45a8ba3bf44bd383bd50e2d). This is the immutable complete v0.2.0 tree immediately before the v0.3.0 work. Any changed file can be restored from this commit.
+
+Changes will be documented here after implementation and testing.
