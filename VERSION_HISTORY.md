@@ -35,5 +35,7 @@ Changes: quick-practice displays a single outlined green tick for each correct a
 ## v0.4.0 — 27 October 2026 — answer coaching and evidence relevance
 
 - Pre-change source checkpoint: [9b42826fda13d284ef6cb536219e16cf9d4b5c5f](https://github.com/nirav2000/Comprehension/tree/9b42826fda13d284ef6cb536219e16cf9d4b5c5f); full v0.3.0 state for rollback.
-- Proposed: Technique Detective, evidence relevance, stepwise answer improvements and optional privacy-consented AI review. New pathway will preserve existing original exercise UI.
-- Deployment and live AI availability to be recorded after verification.
+- Implemented separate `answer-ladder.html` pathway: technique selection, relevance prompts, word/idea checking, local attempt/revision history, and model answers. Existing compact exercises remain unchanged.
+- AI review UI is explicitly marked *not connected*; no user text is transmitted by this release. Genuine language-model analysis requires a protected backend with access controls, rate limits and explicit consent.
+- Existing recording and dictation remain in the established exercises; Answer Ladder accepts editable text or device keyboard dictation.
+- Automated syntax verification passed. Physical iPad test and live GitHub Pages deployment verification are pending.
