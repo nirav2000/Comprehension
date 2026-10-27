@@ -122,7 +122,7 @@ function renderBuild(l,s){
 function renderWrite(l,s){
   $('#lessonBody').innerHTML=`<p class="eyebrow">STEP 4 · EXPLAIN IT</p><h3>Now explain it in your own words</h3><p class="explain">You can type, use your keyboard's microphone, dictate with the button, or record your voice. All help is optional.</p>
   <label for="answerArea" class="overline">MY ANSWER</label><textarea class="answer-area" id="answerArea" spellcheck="true" placeholder="The writer uses ... This makes us imagine ...">${esc(s.answer)}</textarea>
-  <div class="answer-actions"><button id="insertParts" type="button" class="btn secondary">Use my four parts</button><button id="modelBtn" type="button" class="btn ghost">${s.modelSeen?'Hide':'Show'} model answer</button><button id="compareBtn" type="button" class="btn ghost">Check my explanation</button></div>
+  <div class="answer-actions"><button id="insertParts" type="button" class="btn secondary">Use my four parts</button><button id="modelBtn" type="button" class="btn ghost">${s.modelSeen?'Hide':'Show'} model answer</button><button id="compareBtn" type="button" class="btn ghost">Check my explanation</button><button id="aiCoachHandoff" type="button" class="btn secondary">Improve with AI Coach ↗</button></div>
   <div id="modelSlot" class="model ${s.modelSeen?'':'hidden'}"><h4>One strong answer</h4><p>${esc(l.model)}</p><h4>Why is this better?</h4><p class="weak">Less effective: ${esc(l.weak)}</p><p>${esc(l.whyBetter)}</p></div>
   <div id="comparisonSlot"></div>
   <div class="audio-box"><h4>🎙 Speak instead of typing</h4><p>One button records the audio and attempts speech-to-text at the same time. Some browsers allow audio but not transcription; you can still edit your answer or use keyboard dictation.</p>
@@ -135,6 +135,12 @@ function renderWrite(l,s){
   $('#insertParts').onclick=()=>{const bits=s.build.map(x=>x.trim()).filter(Boolean);if(!bits.length){announce('Try adding words in the four boxes first, or show the worked example.');return}const area=$('#answerArea');area.value=bits.join(' ').replace(/\s+([,.!?])/g,'$1');s.answer=area.value;s.entryMode='scaffolded';area.focus()};
   $('#modelBtn').onclick=()=>{s.modelSeen=!s.modelSeen;$('#modelSlot').classList.toggle('hidden',!s.modelSeen);s.feedbackSeen=true};
   $('#compareBtn').onclick=()=>{s.feedbackSeen=true;$('#comparisonSlot').innerHTML=renderComparison(l,s.answer)};
+  $('#aiCoachHandoff').onclick=()=>{
+    const draft=$('#answerArea')?.value||s.answer||'';
+    try{sessionStorage.setItem('comprehension-ai-handoff',JSON.stringify({lessonId:l.id,answer:draft,source:'explain',savedAt:Date.now()}))}
+    catch{window.navigator.clipboard?.writeText(draft).catch(()=>{})}
+    location.href='./answer-ladder.html';
+  };
   $('#recordBtn').onclick=startRecording;
   $('#stopAudioBtn').onclick=()=>stopRecording(false);
   if(s.audioBlob)showAudioPreview(s.audioBlob);
