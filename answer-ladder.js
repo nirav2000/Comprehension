@@ -53,6 +53,16 @@ $('#save').onclick=()=>{const answer=$('#answer').value.trim();if(!answer){$('#f
 $('#ai').onclick=()=>{$('#aiFeedback').textContent='AI feedback is not configured. No text was sent. You can still use the guided feedback above.'};
 $('#consent').onchange=()=>{$('#ai').disabled=!$('#consent').checked};
 render();renderHistory();
+try{
+ const incoming=JSON.parse(sessionStorage.getItem('comprehension-ai-handoff')||'null');
+ if(incoming&&Date.now()-incoming.savedAt<1800000){
+  const found=lessons.findIndex(l=>l.id===incoming.lessonId);
+  if(found>=0){index=found;render()}
+  if(incoming.answer){$('#answer').value=String(incoming.answer).slice(0,4000);$('#feedback').textContent='Your answer was brought over from the '+(incoming.source==='quick'?'five-question practice':'Learn to Explain')+' exercise. Choose Check my ideas or request AI coaching.'}
+ }
+ sessionStorage.removeItem('comprehension-ai-handoff');
+}catch{}
+
 window.addEventListener('comprehension-history-loaded',renderHistory);
 
 $('#showAllHistory').onclick=()=>{showAllHistory=!showAllHistory;$('#showAllHistory').textContent=showAllHistory?'Show recent only':'Show all answers';renderHistory()};
