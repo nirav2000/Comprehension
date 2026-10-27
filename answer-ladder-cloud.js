@@ -34,7 +34,7 @@ async function membership(action){
  const uid=$('#approveDeviceUid').value.trim();
  if(!/^[a-zA-Z0-9_-]{15,128}$/.test(uid)||uid===OWNER_UID)throw Error('Please paste Sai’s Firebase device UID');
  const ref=x.F.doc(x.db,'families',OWNER_UID,'learners','sai','approvedDevices',uid);
- if(action==='approve')usage('write',1,'device-approval');await x.F.setDoc(ref,{app:'comprehension',role:'learner',deviceUid:uid,learnerId:'sai',approvedAt:x.F.serverTimestamp()});
+ if(action==='approve'){usage('write',1,'device-approval');await x.F.setDoc(ref,{app:'comprehension',role:'learner',deviceUid:uid,learnerId:'sai',approvedAt:x.F.serverTimestamp()});}
  else {usage('del',1,'device-revoke');await x.F.deleteDoc(ref);}
  pairingStatus(action==='approve'?'Approved '+uid+'. Sai can now upload answers.':'Revoked '+uid+'. No further uploads are allowed.');
 }
