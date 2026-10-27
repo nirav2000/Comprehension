@@ -6,7 +6,7 @@ on:
         description: Maximum reconstructed historical checkpoints
         required: false
         type: number
-        default: 12
+        default: 60
   push:
     branches: [main]
     paths:
@@ -15,6 +15,6 @@ jobs:
   version-lab-install:
     uses: nirav2000/Apps/.github/workflows/version-lab-install.yml@main
     with:
-      backfill_max: 12
+      backfill_max: 60
     permissions:
       contents: write
