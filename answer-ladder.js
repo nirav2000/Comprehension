@@ -1,13 +1,13 @@
 import {LESSONS} from './explain-data.js';
 const $=s=>document.querySelector(s);
 const lessons=LESSONS.filter(l=>l.sentence?.length&&l.options?.length).slice(0,15);
-let index=0, choice=-1, stage=0;
+let index=0, choice=-1, stage=0,showAllHistory=false;
 const storageKey='comprehension-answer-ladder-v1';
 const saved=()=>{try{return JSON.parse(localStorage.getItem(storageKey)||'[]')}catch{return []}};
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const record=(entry)=>{const a=saved();a.unshift(entry);localStorage.setItem(storageKey,JSON.stringify(a.slice(0,50)));renderHistory()};
 function current(){return lessons[index]}
-function render(){const l=current();if(!l)return;choice=-1;stage=0;$('#counter').textContent='LESSON '+(index+1)+' / '+lessons.length;$('#bar').innerHTML=lessons.map((_,i)=>'<i class="'+(i<=index?'on':'')+'"></i>').join('');$('#heading').textContent=l.title;$('#question').textContent=l.question;$('#quote').textContent=l.quote;$('#choices').innerHTML='';l.options.forEach((o,i)=>{const b=document.createElement('button');b.textContent=o.text;b.onclick=()=>choose(i);$('#choices').append(b)});$('#choiceFeedback').replaceChildren();$('#previous').disabled=index===0;$('#next').textContent=index===lessons.length-1?'Start again':'Next ›';$('#answer').value='';$('#feedback').replaceChildren();$('#model').classList.add('hidden');$('#model').textContent='';$('#aiFeedback').textContent='AI service not connected yet. The guided checker above works offline.';$('#consent').checked=false;renderBuilding();}
+function render(){const l=current();if(!l)return;choice=-1;stage=0;$('#counter').textContent='LESSON '+(index+1)+' / '+lessons.length;$('#bar').innerHTML=lessons.map((_,i)=>'<i class="'+(i<=index?'on':'')+'"></i>').join('');$('#heading').textContent=l.title;$('#question').textContent=l.question;$('#quote').textContent=l.quote;$('#choices').innerHTML='';l.options.forEach((o,i)=>{const b=document.createElement('button');b.textContent=o.text;b.onclick=()=>choose(i);$('#choices').append(b)});$('#choiceFeedback').replaceChildren();$('#previous').disabled=index===0;$('#next').textContent=index===lessons.length-1?'Start again':'Next ›';$('#answer').value='';$('#feedback').replaceChildren();$('#model').classList.add('hidden');$('#model').textContent='';$('#aiFeedback').textContent='Sign in as parent and tick consent to request AI coaching. Your words are not sent until you press Ask AI.';$('#consent').checked=false;renderBuilding();}
 function choose(i){const l=current();choice=i;[...$('#choices').children].forEach((b,j)=>b.classList.toggle('selected',j===i));const box=$('#choiceFeedback');box.replaceChildren();for(const o of l.options){const r=document.createElement('div');r.className='outcome';const m=document.createElement('span');m.className='mark'+(o.correct?'':' bad');m.textContent=o.correct?'✓':'×';const t=document.createElement('span');const b=document.createElement('strong');b.textContent=o.text+' — '+o.part+'. ';t.append(b,document.createTextNode(o.why));r.append(m,t);box.append(r)}}
 function renderBuilding(){
  const l=current(),q=l.quote.toLowerCase();
@@ -29,7 +29,7 @@ function renderBuilding(){
 }
 
 function checker(){const l=current(),text=$('#answer').value.trim(),f=$('#feedback');f.replaceChildren();if(!text){f.innerHTML='<div class="note">Try saying or writing one sentence first, or reveal the model. There is no penalty for needing help.</div>';return}const lower=text.toLowerCase(),groups=l.rubric||[],covered=groups.map(g=>g.some(w=>lower.includes(w.toLowerCase())));const headings=['Writer / technique','Evidence / comparison','Effect / meaning'];const box=document.createElement('div');box.className='note';const h=document.createElement('strong');h.textContent='Ideas detected: '+covered.filter(Boolean).length+' / '+groups.length+' (keyword hints, not a mark)';box.append(h);covered.forEach((ok,i)=>{const p=document.createElement('p');p.textContent=(ok?'✓ ':'? ')+(headings[i]||'Idea')+': '+(ok?'a possible match':'not detected — you may have said it differently');box.append(p)});const tip=document.createElement('p');tip.className='hint';tip.textContent='Try strengthening this ONE part: '+(covered[1]===false?'say which words or objects are being compared':covered[2]===false?'explain what this makes the reader imagine or infer':'explain why that particular quotation is the best evidence');box.append(tip);f.append(box)}
-function renderHistory(){$('#history').innerHTML=saved().slice(0,6).map(x=>'<div class="note"><strong>'+escape(x.title)+'</strong><div class="small">'+escape(new Date(x.date).toLocaleString('en-GB'))+'</div><p>'+escape(x.answer)+'</p></div>').join('')||'<p class="small">No saved explanations yet.</p>'}
+function renderHistory(){$('#parentSummary').textContent=saved().length+' saved attempts across this browser and any synced parent records.';$('#history').innerHTML=saved().slice(0,showAllHistory?100:6).map(x=>'<div class="note"><strong>'+escape(x.title)+'</strong><div class="small">'+escape(new Date(x.date).toLocaleString('en-GB'))+'</div><p>'+escape(x.answer)+'</p></div>').join('')||'<p class="small">No saved explanations yet.</p>'}
 $('#previous').onclick=()=>{if(index){index--;render()}};
 $('#next').onclick=()=>{index=(index+1)%lessons.length;render()};
 $('#check').onclick=checker;
@@ -39,3 +39,6 @@ $('#ai').onclick=()=>{$('#aiFeedback').textContent='AI feedback is not configure
 $('#consent').onchange=()=>{$('#ai').disabled=!$('#consent').checked};
 render();renderHistory();
 window.addEventListener('comprehension-history-loaded',renderHistory);
+
+$('#showAllHistory').onclick=()=>{showAllHistory=!showAllHistory;$('#showAllHistory').textContent=showAllHistory?'Show recent only':'Show all answers';renderHistory()};
+$('#exportHistory').onclick=()=>{const blob=new Blob([JSON.stringify({app:'comprehension',schema:1,exportedAt:new Date().toISOString(),attempts:saved()},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='sai-comprehension-history.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)};
