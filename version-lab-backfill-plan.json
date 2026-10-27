@@ -1,8 +1,332 @@
 {
-  "generatedAt": "2026-10-27T19:41:17.909Z",
-  "totalCommits": 95,
-  "max": 12,
+  "generatedAt": "2026-10-27T19:44:12.237Z",
+  "totalCommits": 107,
+  "max": 60,
   "checkpoints": [
+    {
+      "sha": "1090a9340c83bfaae1337c3be6c9deee7ba6f274",
+      "date": "2026-09-14",
+      "tag": null,
+      "suggestedTitle": "Initial commit",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 1
+    },
+    {
+      "sha": "5f7f6e7d552f5116d5ffe6285d0c3ea7e05636b9",
+      "date": "2026-09-29",
+      "tag": null,
+      "suggestedTitle": "Adopt shared auth v1 in shadow mode",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 2
+    },
+    {
+      "sha": "d740f1094c3e86ac23098fc35a633dca2583553e",
+      "date": "2026-09-29",
+      "tag": null,
+      "suggestedTitle": "Pin shared auth to v1.0.0",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 3
+    },
+    {
+      "sha": "aa57099b00abcd32b44c60e280671a056fad7166",
+      "date": "2026-10-02",
+      "tag": null,
+      "suggestedTitle": "Return Comprehension to pre-v1 auth state pending Auth Lab validation",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 4
+    },
+    {
+      "sha": "4ed864db0aaa4e61ee2ba3d94d8298585de522ab",
+      "date": "2026-10-04",
+      "tag": null,
+      "suggestedTitle": "Adopt shared PWA v1",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 5
+    },
+    {
+      "sha": "5ee000969ed639f3c0a243a788ac4be9fc789161",
+      "date": "2026-10-04",
+      "tag": null,
+      "suggestedTitle": "Add shared PWA adoption release gate",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 6
+    },
+    {
+      "sha": "b39c4f18246cde8b4a38dd44d30d5511e2ad69d4",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "chore: checkpoint pre-redesign v0.1.0 with immutable commit reference",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 7
+    },
+    {
+      "sha": "1fc39c38427d5fcd8cb398ead4a1fe5590cf842c",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "release v0.2.0: restore original compact exercise and neutral dark palette",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 8
+    },
+    {
+      "sha": "57a1cd2ff6e9d976ce804536ca73793f264c193d",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "release v0.2.0: restore original compact exercise and neutral dark palette",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 9
+    },
+    {
+      "sha": "d03aa74eca23a4b6593b43e18b76afdbb3d0e57c",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "release v0.2.0: restore original compact exercise and neutral dark palette",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 10
+    },
+    {
+      "sha": "9bd3d5e8dbabbbc6ba00596271282d38f10919b9",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "release v0.2.0: restore original compact exercise and neutral dark palette",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 11
+    },
+    {
+      "sha": "ee8bd6d271abdcbd2a549629b54b704bde8768bc",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "release v0.2.0: restore original compact exercise and neutral dark palette",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 12
+    },
+    {
+      "sha": "3c0d9c91bf4677a481d2f6f72245719da2b399a1",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "release v0.2.0: record version and rollback baseline",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 13
+    },
+    {
+      "sha": "91f10267ac7b57f3f45a8ba3bf44bd383bd50e2d",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "docs: record v0.2.0 release and verification limits",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 14
+    },
+    {
+      "sha": "d9de709ed0842abc017bf3f4d3ce1eed4b9d9686",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "chore: record v0.2.0 rollback snapshot before v0.3.0 work",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 15
+    },
+    {
+      "sha": "fbecb60136f4aa036aa6d1134ac9218f4e616c1c",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat(v0.3.0): outlined answer badges and combined audio plus dictation",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 16
+    },
+    {
+      "sha": "e8daeb8b8972786187da3730434f527ff46dd303",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat(v0.3.0): combined voice button and semantic green/red markers",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 17
+    },
+    {
+      "sha": "4e982b9a70ef50ec093ce1c2ae9e3bb646dec154",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat(v0.3.0): combined voice button and semantic green/red markers",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 18
+    },
+    {
+      "sha": "c3bb850da8c9c36b1c9206a6cd5d70a350550bac",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat(v0.3.0): combined voice button and semantic green/red markers",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 19
+    },
+    {
+      "sha": "4d7b93c902a161e3776af22c4ebaf3288d78e8b2",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat(v0.3.0): unify lesson audio and dictation buttons",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 20
+    },
+    {
+      "sha": "a07619f0c3ae1853c74f5f551f89d3095fa6fa95",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "docs/style(v0.3.0): release notes and circular feedback indicators",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 21
+    },
+    {
+      "sha": "6c6573bbb9f0e2ad19d98bf838836028c5b3fdac",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "docs/style(v0.3.0): release notes and circular feedback indicators",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 22
+    },
+    {
+      "sha": "99abb62feef1363f5aa21f01f750ada121aea62f",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "docs/style(v0.3.0): release notes and circular feedback indicators",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 23
+    },
+    {
+      "sha": "9b42826fda13d284ef6cb536219e16cf9d4b5c5f",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "fix(v0.3.0): remove stale dictation control reference",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 24
+    },
+    {
+      "sha": "40b592c874e0f000d96f3ba195bd9afaf544ccce",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "chore: checkpoint v0.3.0 before v0.4.0 coaching feature",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 25
+    },
+    {
+      "sha": "da37fac97230845cd2340f7456f14a510013c773",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat(v0.4.0): add isolated answer ladder interface",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 26
+    },
+    {
+      "sha": "3fae28417b77209d15ca21d4f477e1b9a7edf4e9",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat(v0.4.0): guided evidence choice and iterative answer coaching",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 27
+    },
+    {
+      "sha": "03c37956a069a54033235b608792072fa5865439",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "chore: release v0.4.0 capability and limitations",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 28
+    },
+    {
+      "sha": "6be31d7fcdb7bd5852ab122e47e995eb57e79654",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "docs: record v0.4.0 answer ladder scope and AI limitation",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 29
+    },
+    {
+      "sha": "563187dcb2c0b2a1f93c1944d20f96c52a09a7fd",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "chore: checkpoint v0.4.0 before AI marking and Firebase work",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 30
+    },
+    {
+      "sha": "658fce663d015bddaee1c68da3164fa971c419f3",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat: parent Firebase sign-in, AI and ChatGPT controls",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 31
+    },
+    {
+      "sha": "cb81c8e1bf21f8b57a397b38045a1b3cecfdcdf2",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat: authenticated AI marking and owner-scoped Firebase answer sync",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 32
+    },
+    {
+      "sha": "cb738dee36331fd0814b6207cedec90a6dc22165",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "fix: sync prior Learn to Explain and compact practice answers to parent Firebase",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 33
+    },
+    {
+      "sha": "e9f28633b0fd621c5422db732c9269af9e93e692",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "fix: persist AI feedback as separate immutable parent-owned Firebase event",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 34
+    },
+    {
+      "sha": "e6eaf2b5baea859720cb625c566416b5bb7e9fa0",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "test: validate AI coach, Firebase integration and GPT Actions contract",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 35
+    },
+    {
+      "sha": "d6277dd4aa6ff9182c84104a4cfd6fbe6a84e5be",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "release: v0.5.0 Comprehension AI coach and parent sync",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 36
+    },
     {
       "sha": "1e26c6503b808c2405219286d8564dbd25660738",
       "date": "2026-10-27",
@@ -10,7 +334,7 @@
       "suggestedTitle": "feat: parent approves or revokes learner device using protected Firebase membership",
       "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
       "areas": [],
-      "order": 1
+      "order": 37
     },
     {
       "sha": "f93c264ebb6b3e21add5c3cd0d051b7bc18fd5b6",
@@ -19,7 +343,7 @@
       "suggestedTitle": "release v0.6.0: restricted learner pairing, full AI and history integration",
       "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
       "areas": [],
-      "order": 2
+      "order": 38
     },
     {
       "sha": "7ea8a0bd18e1ab4e1b730424f08c6a02dafe01ca",
@@ -28,7 +352,7 @@
       "suggestedTitle": "release v0.6.0: restricted learner pairing, full AI and history integration",
       "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
       "areas": [],
-      "order": 3
+      "order": 39
     },
     {
       "sha": "b94a2e06bd3a22e291f10e87af2db96fa001fc2f",
@@ -37,7 +361,7 @@
       "suggestedTitle": "release v0.6.0: restricted learner pairing, full AI and history integration",
       "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
       "areas": [],
-      "order": 4
+      "order": 40
     },
     {
       "sha": "c63699e9d0559d36023f253369efa13c18a0b918",
@@ -46,7 +370,7 @@
       "suggestedTitle": "release v0.6.0: restricted learner pairing, full AI and history integration",
       "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
       "areas": [],
-      "order": 5
+      "order": 41
     },
     {
       "sha": "e1c0c5a33cc5854870d508945344500443737d2f",
@@ -55,7 +379,7 @@
       "suggestedTitle": "release v0.6.0: record approved learner-device cloud sync",
       "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
       "areas": [],
-      "order": 6
+      "order": 42
     },
     {
       "sha": "5cd9f07d29d5afd9a5100a89138943a2b7cfacd0",
@@ -64,7 +388,7 @@
       "suggestedTitle": "docs: record v0.5 and v0.6 feature release, rollback and remaining verification",
       "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
       "areas": [],
-      "order": 7
+      "order": 43
     },
     {
       "sha": "35f8222c36fab4928f7cd7e2957db559de8c5c3f",
@@ -73,7 +397,7 @@
       "suggestedTitle": "chore: install canonical shared Version Lab configuration and developer gateway",
       "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
       "areas": [],
-      "order": 8
+      "order": 44
     },
     {
       "sha": "67aa7245a185ba33fea6dd719e01703e4a829c7c",
@@ -82,7 +406,7 @@
       "suggestedTitle": "chore: install canonical shared Version Lab configuration and developer gateway",
       "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
       "areas": [],
-      "order": 9
+      "order": 45
     },
     {
       "sha": "6d32e4005065abbb8e7ff84345b05bddfc1ab73e",
@@ -91,7 +415,7 @@
       "suggestedTitle": "chore: install canonical shared Version Lab configuration and developer gateway",
       "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
       "areas": [],
-      "order": 10
+      "order": 46
     },
     {
       "sha": "e5e578cf26ffbc6de341f81b88b59b8a271efe9a",
@@ -100,7 +424,7 @@
       "suggestedTitle": "chore: install canonical shared Version Lab configuration and developer gateway",
       "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
       "areas": [],
-      "order": 11
+      "order": 47
     },
     {
       "sha": "4dc2f07ac16222811adec2e184d7ec7b534c1088",
@@ -109,7 +433,115 @@
       "suggestedTitle": "ci: start one-time official shared Version Lab historical backfill",
       "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
       "areas": [],
-      "order": 12
+      "order": 48
+    },
+    {
+      "sha": "70f7ae8ca31f70f7e2bcda474dc030f4f0959ec8",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "Install shared Version Lab with historical backfill",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 49
+    },
+    {
+      "sha": "2bf4bd4aa549599640f472a2609dc261417e91f3",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat: integrate canonical Auth shadow mode and Learning Sync learning evidence without moving private answers",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 50
+    },
+    {
+      "sha": "18a6156a0e3855251ffd071576380f1eb76004c6",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat: install shared Firebase Usage Monitor and Auth/Learning Sync bootstrap",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 51
+    },
+    {
+      "sha": "17babb0593783b6b9511de03bb2b429c959e2420",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat: install shared Firebase Usage Monitor and Auth/Learning Sync bootstrap",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 52
+    },
+    {
+      "sha": "2405d2546258f1823abd617da456b686d5a32209",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat: install shared Firebase Usage Monitor and Auth/Learning Sync bootstrap",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 53
+    },
+    {
+      "sha": "69ad9c7530735d283e7f65b00ad7291f81c88dc2",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat: install shared Firebase Usage Monitor and Auth/Learning Sync bootstrap",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 54
+    },
+    {
+      "sha": "9591ea6a1e5563a0595859295f673157222f7511",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat: attribute Firestore operations to shared Firebase Usage Monitor",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 55
+    },
+    {
+      "sha": "83fae72fe2b079747ffc4760378a5636810a52f6",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat: attribute Firestore operations to shared Firebase Usage Monitor",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 56
+    },
+    {
+      "sha": "9d4318af9379db8b9e0d6124854e7bca5717b33a",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat: install shared recursive and Playwright release validation",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 57
+    },
+    {
+      "sha": "a4a069da60e548585ddbee92910a06c11c458a9e",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat: install shared recursive and Playwright release validation",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 58
+    },
+    {
+      "sha": "b20d82d28532666d080a688d4273ca14954f9a04",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "feat: install shared recursive and Playwright release validation",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 59
+    },
+    {
+      "sha": "30c9bffaa71adbeb1858b09eadd35a1b0dc20d30",
+      "date": "2026-10-27",
+      "tag": null,
+      "suggestedTitle": "fix: backfill full Comprehension progression including original learning UI",
+      "suggestedSummary": "Reconstructed historical checkpoint from Git history.",
+      "areas": [],
+      "order": 60
     }
   ]
 }

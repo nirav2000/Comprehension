@@ -1,0 +1,49 @@
+{
+  "checkpointId": "vl-historical-2026-10-04-5ee00096",
+  "appId": "comprehension",
+  "productVersion": null,
+  "commit": "5ee000969ed639f3c0a243a788ac4be9fc789161",
+  "sourceRef": "5ee000969ed639f3c0a243a788ac4be9fc789161",
+  "createdAt": "2026-10-27T19:44:12.659Z",
+  "title": "Add shared PWA adoption release gate",
+  "summary": "Reconstructed historical checkpoint from Git history.",
+  "areas": [],
+  "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/5ee000969ed639f3c0a243a788ac4be9fc789161",
+  "snapshotUrl": "./snapshots/vl-historical-2026-10-04-5ee00096/index.html",
+  "snapshotSafety": "visual-only",
+  "compatibility": {
+    "frontend": "archived",
+    "source": "git",
+    "snapshot": "generated",
+    "backend": "live backend connections blocked",
+    "data": "contract recorded"
+  },
+  "data": {
+    "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+    "projectId": "kk-syllabus",
+    "schemaVersion": "1",
+    "paths": [
+      "families/{parentUid}/learners/sai/events",
+      "families/{parentUid}/learners/sai/approvedDevices",
+      "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+    ],
+    "notes": "Archived snapshots are visual-only and must not access the production learner database."
+  },
+  "readOnlyAdapter": null,
+  "platform": {
+    "contract": "v1.7.0",
+    "dependencies": [
+      "auth/v1",
+      "learning/v1",
+      "learning-sync/v1",
+      "pwa/v1",
+      "app-monitor",
+      "firebase-usage-monitor"
+    ]
+  },
+  "generator": {
+    "name": "Apps Version Lab",
+    "contractVersion": 1,
+    "backfilled": true
+  }
+}

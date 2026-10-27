@@ -1,0 +1,49 @@
+{
+  "version": false,
+  "requireVersionInIndex": false,
+  "ignore": [
+    "version-lab-data",
+    "version-lab-backfill-plan.json",
+    "artifacts"
+  ],
+  "pages": [
+    {
+      "path": "/index.html",
+      "readySelector": "#practiceView",
+      "minCount": 1
+    },
+    {
+      "path": "/quick-practice.html",
+      "readySelector": "#options button",
+      "minCount": 3
+    },
+    {
+      "path": "/explain.html",
+      "readySelector": "#lessonList",
+      "minCount": 1
+    },
+    {
+      "path": "/answer-ladder.html",
+      "readySelector": "#answer",
+      "minCount": 1
+    }
+  ],
+  "ignoreLocalRequestFailures": [
+    "/Apps/",
+    "/Next/"
+  ],
+  "releaseGate": {
+    "enabled": true,
+    "scenarioModule": "validation/comprehension-release-gate.mjs",
+    "path": "/quick-practice.html",
+    "readySelector": "#options button",
+    "allowExternalNetwork": false,
+    "maxFirebaseWrites": 0,
+    "maxFirebaseDeletes": 0,
+    "maxFirebaseReads": 0,
+    "maxExternalRequests": 20,
+    "maxLocalRequests": 40,
+    "quietMs": 500,
+    "timeoutMs": 7000
+  }
+}

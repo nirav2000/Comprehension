@@ -1,0 +1,49 @@
+{
+  "checkpointId": "vl-historical-2026-10-27-658fce66",
+  "appId": "comprehension",
+  "productVersion": "0.4.0",
+  "commit": "658fce663d015bddaee1c68da3164fa971c419f3",
+  "sourceRef": "658fce663d015bddaee1c68da3164fa971c419f3",
+  "createdAt": "2026-10-27T19:44:15.020Z",
+  "title": "feat: parent Firebase sign-in, AI and ChatGPT controls",
+  "summary": "Reconstructed historical checkpoint from Git history.",
+  "areas": [],
+  "sourceUrl": "https://github.com/nirav2000/Comprehension/tree/658fce663d015bddaee1c68da3164fa971c419f3",
+  "snapshotUrl": "./snapshots/vl-historical-2026-10-27-658fce66/index.html",
+  "snapshotSafety": "visual-only",
+  "compatibility": {
+    "frontend": "archived",
+    "source": "git",
+    "snapshot": "generated",
+    "backend": "live backend connections blocked",
+    "data": "contract recorded"
+  },
+  "data": {
+    "provider": "Firebase Firestore, browser localStorage, Cloudflare Workers AI",
+    "projectId": "kk-syllabus",
+    "schemaVersion": "1",
+    "paths": [
+      "families/{parentUid}/learners/sai/events",
+      "families/{parentUid}/learners/sai/approvedDevices",
+      "learningSyncApps/comprehension/users/{uid}/learners/sai/chunks"
+    ],
+    "notes": "Archived snapshots are visual-only and must not access the production learner database."
+  },
+  "readOnlyAdapter": null,
+  "platform": {
+    "contract": "v1.7.0",
+    "dependencies": [
+      "auth/v1",
+      "learning/v1",
+      "learning-sync/v1",
+      "pwa/v1",
+      "app-monitor",
+      "firebase-usage-monitor"
+    ]
+  },
+  "generator": {
+    "name": "Apps Version Lab",
+    "contractVersion": 1,
+    "backfilled": true
+  }
+}

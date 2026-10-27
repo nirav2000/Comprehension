@@ -4,7 +4,7 @@
   "productVersion": "0.5.0",
   "commit": "1e26c6503b808c2405219286d8564dbd25660738",
   "sourceRef": "1e26c6503b808c2405219286d8564dbd25660738",
-  "createdAt": "2026-10-27T19:41:17.989Z",
+  "createdAt": "2026-10-27T19:44:15.647Z",
   "title": "feat: parent approves or revokes learner device using protected Firebase membership",
   "summary": "Reconstructed historical checkpoint from Git history.",
   "areas": [],

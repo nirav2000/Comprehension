@@ -4,7 +4,7 @@
   "productVersion": "0.6.0",
   "commit": "5cd9f07d29d5afd9a5100a89138943a2b7cfacd0",
   "sourceRef": "5cd9f07d29d5afd9a5100a89138943a2b7cfacd0",
-  "createdAt": "2026-10-27T19:41:18.512Z",
+  "createdAt": "2026-10-27T19:44:16.317Z",
   "title": "docs: record v0.5 and v0.6 feature release, rollback and remaining verification",
   "summary": "Reconstructed historical checkpoint from Git history.",
   "areas": [],

@@ -4,7 +4,7 @@
   "productVersion": "0.5.0",
   "commit": "7ea8a0bd18e1ab4e1b730424f08c6a02dafe01ca",
   "sourceRef": "7ea8a0bd18e1ab4e1b730424f08c6a02dafe01ca",
-  "createdAt": "2026-10-27T19:41:18.166Z",
+  "createdAt": "2026-10-27T19:44:15.871Z",
   "title": "release v0.6.0: restricted learner pairing, full AI and history integration",
   "summary": "Reconstructed historical checkpoint from Git history.",
   "areas": [],
