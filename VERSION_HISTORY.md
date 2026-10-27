@@ -43,5 +43,16 @@ Changes: quick-practice displays a single outlined green tick for each correct a
 ## v0.5.0 — 27 October 2026 — Cloudflare AI, parent sync, ChatGPT routes
 
 - Pre-change immutable source checkpoint: [6be31d7fcdb7bd5852ab122e47e995eb57e79654](https://github.com/nirav2000/Comprehension/tree/6be31d7fcdb7bd5852ab122e47e995eb57e79654).
-- Planned: Workers AI coaching with signed-in parent verification, opt-in text requests, iterative hints, answer version history, Firebase sync, ChatGPT export and GPT Actions OpenAPI.
-- Deployment validation, cloud permissions and known limitations to be recorded before release.
+- Implemented Cloudflare Qwen3 Workers AI service with verified Firebase ID tokens, explicit text consent, source-limited CORS, per-user rate limiting, and one-step coaching response schema. Worker health deployment succeeded.
+- Implemented parent-owned Firestore answer history, older-exercise import, local backup, Ask ChatGPT prompt copy, and a GPT Actions OpenAPI contract. A private Actions token must be installed before that integration can authenticate.
+- Synthetic model benchmark via the existing deployment API token returned 401 (insufficient REST inference permission); end-to-end marking still requires a signed-in practice request.
+- Original short exercises remain visually unchanged and can transfer an answer into Answer Ladder.
+
+## v0.6.0 — 27 October 2026 — secure Sai device pairing
+
+- **Pre-change checkpoint:** [216b086e3d4801c04de8f30472af66d8ff06175a](https://github.com/nirav2000/Comprehension/tree/216b086e3d4801c04de8f30472af66d8ff06175a).
+- Added a separate anonymous learner Firebase identity, displayed pairing UID, parent approval/revocation, and automatic append-only sync of answers and AI feedback after approval. The learner identity cannot read other family records or approve itself.
+- Extended existing kk-syllabus Firestore rules with tightly scoped approvedDevices and events permissions. Security rules released by the existing deployment workflow (see kk-syllabus Actions history).
+- Expanded parent view to 500 recent synced events and added history export.
+- Release v0.6.0 uses Qwen3. The Cloudflare Worker deployment and Firestore security-rule workflows completed successfully; actual child-device pairing and signed-in AI marking require testing with real credentials and a physical device.
+- **User setup:** Firebase Anonymous provider must be enabled, parent must approve child's UID; for GPT Actions a private long bearer token must be stored as Apps repository secret and in the GPT Actions configuration.
