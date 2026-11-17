@@ -37,7 +37,7 @@ test('language analysis uses an accurate worked example',()=>{
 test('uses dark green theme, progressive stages and iOS speech fallbacks',()=>{
   assert.ok(css.includes('--green:#0eab83'));
   for(const label of ['Understand','Choose','Build','Speak & write'])assert.ok(html.includes(label));
-  for(const feature of ['MediaRecorder','getUserMedia','webkitSpeechRecognition','Dictate to text','indexedDB','exportICS','addToNext','renderParent','startLearningSDK'])assert.ok(source.includes(feature)||html.includes(feature),feature);
+  for(const feature of ['MediaRecorder','getUserMedia','webkitSpeechRecognition','Record + Dictate','indexedDB','exportICS','addToNext','renderParent','startLearningSDK'])assert.ok(source.includes(feature)||html.includes(feature),feature);
   assert.ok(html.includes('https://nirav2000.github.io/Apps/apps-auth.js'));
   assert.ok(html.includes('explain.js'));
 });
