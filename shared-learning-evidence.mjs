@@ -3,10 +3,9 @@
 async function bootstrap(){
   const target=document.getElementById('parentView');
   if(!target)return;
-  let mountEvidencePanel,toLearningEvent;
+  let mountEvidencePanel;
   try{
     ({mountEvidencePanel}=await import('https://nirav2000.github.io/Apps/learning-evidence/v1/panel.js'));
-    ({toLearningEvent}=await import('https://nirav2000.github.io/Apps/learning-evidence/v1/index.js'));
   }catch(e){console.warn('Shared Learning Evidence unavailable; original progress remains intact',e);return;}
   let panel;
   try{panel=mountEvidencePanel({target,appId:'comprehension',accountId:'guest',learnerId:'sai',
@@ -29,27 +28,9 @@ async function bootstrap(){
     try{panel.store.ingest((saved?.attempts||[]).map(convert).filter(Boolean));}
     catch(e){console.warn('Comprehension evidence capture unavailable; original attempts remain saved',e);}
   }
-  function mirrorManual(){
-    const sdk=window.ComprehensionShared?.learningStore;
-    const sync=window.ComprehensionShared?.learningSync;
-    if(!sdk||!sync)return;
-    const linked=new Set((sdk.getState().events||[]).map(e=>e.context?.learningEvidenceV1?.id).filter(Boolean));
-    let changed=false;
-    for(const row of panel.store.getEntries()){
-      if(row.source?.kind!=='parent-check'||linked.has(row.id))continue;
-      sdk.record(toLearningEvent(row));linked.add(row.id);changed=true;
-    }
-    if(changed){
-      try{sync.capture(sdk.getState());}
-      catch(e){console.warn('Manual assessment saved locally; Learning Sync mirror unavailable',e);}
-    }
-  }
-  panel.store.subscribe(mirrorManual);
   capture();
-  mirrorManual();
   window.addEventListener('comprehension-local-saved',capture);
   window.addEventListener('comprehension-history-loaded',capture);
-  window.addEventListener('comprehension-shared-status',mirrorManual);
   window.COMPREHENSION_LEARNING_EVIDENCE={store:panel.store,panel,refresh:capture};
   if(new URLSearchParams(location.search).get('learningEvidence')==='1'){
     document.querySelector('[data-view="parent"]')?.click();
